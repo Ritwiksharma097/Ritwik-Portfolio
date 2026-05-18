@@ -71,6 +71,57 @@ a { color: inherit; text-decoration: none; }
   padding: 0 var(--gutter);
 }
 
+/* ---------- Cross-site bar ---------- */
+.xsite {
+  background: #08090c;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.xsite-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 8px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.xsite-home {
+  color: var(--text-soft);
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+.xsite-home:hover { color: var(--text); }
+.xsite-home .arrow {
+  color: var(--text-faint);
+  margin-right: 4px;
+}
+.xsite-links {
+  display: flex;
+  gap: var(--s-4);
+  align-items: center;
+}
+.xsite-links a {
+  color: var(--text-faint);
+  transition: color 0.15s ease;
+}
+.xsite-links a:hover { color: var(--text-soft); }
+.xsite-links a.current {
+  color: var(--accent);
+}
+.xsite-sep {
+  color: var(--text-faint);
+  opacity: 0.4;
+}
+@media (max-width: 520px) {
+  .xsite-inner { padding: 6px var(--gutter); gap: var(--s-3); }
+  .xsite { font-size: 11px; }
+  .xsite-home .label { display: none; }
+}
+
 /* ---------- Nav ---------- */
 .nav {
   position: sticky;
