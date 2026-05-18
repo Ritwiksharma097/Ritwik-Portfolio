@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batak Reaction Wall · Ritwik Sharma</title>
+  <meta name="description" content="A wall-mounted reaction game built for public venues. Players hit lit buttons as fast as they can; the wall scores and ranks them. Software, scene design, and i">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Installation · Hardware Integration</span></div>
+    <h1 class="cs-title">Batak Reaction Wall</h1>
+    <p class="cs-lede">A wall-mounted reaction game built for public venues. Players hit lit buttons as fast as they can; the wall scores and ranks them. Software, scene design, and installation logic by me. Physical button hardware co-developed with an embedded engineer.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Software solo, hardware co-developed</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--good);">●</span> Multiple deployments</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">Recurring</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Wall-mounted physical reaction game</div>
+      </div>
+      <div class="item">
+        <div class="label">Audience</div>
+        <div class="value">Public events, brand activations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>Batak is one of the oldest and most reliable interactive formats in event activation: lights blink in a sequence, players race to slap them out, the wall reports their time and accuracy. Simple in concept, brutally demanding in execution because the system has to be <em>fast</em>, latency between light-out and hit-detected is the difference between a fair game and a frustrating one.</p><div class="figure"><video src="../assets/batak/batak-installation.mp4" poster="../assets/batak/batak-installation.jpg" controls muted loop playsinline preload="metadata"></video><div class="figure-caption">A deployed Batak unit. The wall is the interface; the software is what makes it feel responsive.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>How the work was split</h2><p>I built the software stack: game logic, scoring, sequencing, score display, lighting patterns, the round timer, and the operator interface for resetting between players. The buttons themselves, the physical light-up domes, the microcontroller integration, the wiring, were co-developed with an embedded engineer with hardware specialization.</p><p>The interface between the two layers is where I did most of the integration work: a small serial protocol between the Unity-side game and the Arduino-side button controller that handles button-press events, light state, and recovery from disconnects.</p></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Architecture</h2><div class="arch"><pre>  ┌────────────────────────────┐
+  │   Unity game (my work)     │
+  │   - round timing           │
+  │   - sequence generation    │
+  │   - scoring, display       │
+  │   - operator UI            │
+  └─────────────┬──────────────┘
+                │ serial protocol
+                │
+  ┌─────────────┴──────────────┐
+  │   Arduino / microcontroller│
+  │   (co-developed)           │
+  │   - light state            │
+  │   - button polling         │
+  │   - debouncing             │
+  └─────────────┬──────────────┘
+                │
+  ┌─────────────┴──────────────┐
+  │   Physical buttons (HW)    │
+  └────────────────────────────┘</pre></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What the installation taught me</h2><ul><li><strong>Latency budget is unforgiving.</strong> The full round-trip from "button pressed" to "score updated" has to be under ~50ms or the game feels broken.</li><li><strong>Hardware failure modes are real.</strong> A button that stops registering mid-round has to be detected and the round either continued or aborted gracefully.</li><li><strong>The crowd dynamic is part of the design.</strong> A Batak wall draws crowds; the score display has to be readable from across the venue.</li></ul></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Unity</span><span>C#</span><span>Arduino integration</span><span>Serial protocol</span><span>Custom operator UI</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Hardware-software integration.</strong> Working with embedded systems through a defined protocol.</li><li><strong>Honest scope.</strong> I built the software; I worked with someone else for the hardware. Production results require knowing where your skills stop.</li><li><strong>Recurring deployment.</strong> The same software stack has been used across multiple event deployments without rebuild.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="pirate-boat.html">
+        <div class="tag">Installation</div>
+        <div class="title">Pirate Boat</div>
+        <div class="desc">Another mall installation. Different mechanic, same discipline.</div>
+      </a>
+      <a href="photobooths.html">
+        <div class="tag">Installation</div>
+        <div class="title">AI Photobooths</div>
+        <div class="desc">Touchscreen installations at airport hubs.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

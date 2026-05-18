@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open-Water Boat Racing · Ritwik Sharma</title>
+  <meta name="description" content="A boat racing system originally built as a VR experience and later deployed as a dual-screen physical installation with custom ship&#x27;s-wheel controllers at a lux">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Game · VR · Installation</span></div>
+    <h1 class="cs-title">Open-Water Boat Racing</h1>
+    <p class="cs-lede">A boat racing system originally built as a VR experience and later deployed as a dual-screen physical installation with custom ship's-wheel controllers at a luxury retail venue. Checkpoint racing, buoyancy physics, themed art direction. Fully rebuilt in 2026 with a proper pirate ship and a portrait-orientation HUD for mobile and vertical-screen deployments.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design + engineering</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--good);">●</span> Updated 2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">Originally 2023, refactored 2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Original</div>
+        <div class="value">VR experience</div>
+      </div>
+      <div class="item">
+        <div class="label">Deployment</div>
+        <div class="value">Mall installation with custom controllers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>The original brief was a VR boat racing experience, head-tracked, motion-controlled, designed for headsets. The mechanic was simple: race through a sequence of checkpoint rings across open water, beat the timer, score on time bonuses.</p><p>It later got deployed as a physical installation in a luxury retail mall, dual-screen, with custom ship's-wheel controllers built specifically for the booth. The themed framing was set by the deployment client; the underlying system was the same.</p><p>In 2026 I rebuilt the whole thing on Unity 6.4 with a proper pirate ship, a portrait-orientation HUD (SCORE / TIMER / CHECKPOINTS), and a cleaner checkpoint system. The newer version is designed to run on vertical screens, kiosks, mobile, mall installations.</p><div class="figure-grid"><div class="figure"><video src="../assets/pirate-boat/boat-gameplay.mp4" poster="../assets/pirate-boat/boat-gameplay-2.jpg" controls muted loop playsinline preload="metadata"></video><div class="figure-caption">Updated 2026 build. Portrait orientation, full pirate ship, in-frame HUD with timer and 1/20 checkpoint counter.</div></div><div class="figure"><video src="../assets/pirate-boat/pirate-boat-installation.mp4" poster="../assets/pirate-boat/pirate-boat-installation.jpg" controls muted loop playsinline preload="metadata"></video><div class="figure-caption">Earlier mall installation deployment. Dual screens, custom ship's-wheel controllers, themed booth.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Architecture</h2><p>The core game system is built on three pieces I designed to be reusable: a course definition (a directed sequence of checkpoint rings with positions and rotations), a checkpoint detection layer (collider-based, with event hooks for ring entry, completion, miss), and a scoring system (time, accuracy, completion bonus). The same core handles VR, mall installation with custom hardware, and mobile portrait.</p><div class="figure-grid"><div class="figure"><img src="../assets/pirate-boat/unity-checkpoint-scene.png" alt="Unity scene view. Course (object that holds the checkpoint sequence), Timer, Scoring all top-level."><div class="figure-caption">Unity scene view. Course (object that holds the checkpoint sequence), Timer, Scoring all top-level.</div></div><div class="figure"><img src="../assets/pirate-boat/unity-checkpoint-script.png" alt="Per-checkpoint script. Ring motion, detection radius, OnRingComplete / OnRingMissed events. Designer-friendly inspector."><div class="figure-caption">Per-checkpoint script. Ring motion, detection radius, OnRingComplete / OnRingMissed events. Designer-friendly inspector.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What the installation taught me</h2><p>The mall deployment was the part of this project I have learned most from. Lessons from shipping software into a physical kiosk that strangers use unsupervised:</p><ul><li><strong>Custom controllers fail differently than gamepads.</strong> A ship's wheel has different latency and resolution characteristics. The control mapping had to be retuned for the booth.</li><li><strong>Onboarding has to be zero.</strong> No tutorial screens. The player walks up, sees the boat, sees the wheel, sees the timer, and starts.</li><li><strong>Reset has to be instant.</strong> A booth that takes 20 seconds to reset between players loses traffic. The system resets in under one second.</li><li><strong>Visual feedback has to be loud.</strong> A mall is noisy. Checkpoint passes have to be visually obvious from across the venue.</li></ul></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Unity 6.4</span><span>C#</span><span>VR (original)</span><span>Custom controller hardware integration</span><span>Portrait-orientation HUD</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Multi-target Unity systems.</strong> Same core, shipped as VR, mall installation, and portrait kiosk.</li><li><strong>Production discipline for installations.</strong> Reset, recovery, idle states, controller failure handling.</li><li><strong>Long-term maintenance.</strong> The system has been rebuilt and improved across years rather than abandoned.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="batak.html">
+        <div class="tag">Installation</div>
+        <div class="title">Batak Reaction Wall</div>
+        <div class="desc">Another installation with custom hardware; same discipline around physical deployment.</div>
+      </a>
+      <a href="jeep-vr.html">
+        <div class="tag">VR</div>
+        <div class="title">Jeep VR</div>
+        <div class="desc">First-person VR driving experience. Vehicle systems and cockpit ergonomics.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Project · Ritwik Sharma</title>
+  <meta name="description" content="A hand-illustrated point-and-click adventure built in Unity using Adventure Creator. A man wakes up in a park, has lost his bag, and meets a familiar small boy ">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Game · Solo · MA Project</span></div>
+    <h1 class="cs-title">Final Project</h1>
+    <p class="cs-lede">A hand-illustrated point-and-click adventure built in Unity using Adventure Creator. A man wakes up in a park, has lost his bag, and meets a familiar small boy named Jimmy. Multiple scenes, puzzle design, hover-to-identify hotspots, dialogue, pause menu, save and load. Shares its protagonist (Jimmy) with my MA platformer.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design, code, narrative</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono">Complete, runs on current hardware</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2021</div>
+      </div>
+      <div class="item">
+        <div class="label">Engine</div>
+        <div class="value">Unity (with Adventure Creator)</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Hand-illustrated point-and-click adventure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>A complete hand-illustrated point-and-click adventure. The opening: a man stands in a park near a tree and a red bench. <em>"Hi, I lost my Bag when I was asleep in this Park."</em> The player has to help him recover it. Along the way the player meets Jimmy, the same small character from <a href="sidescroller.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">SideScroller</a>, who plays a role in the resolution.</p><div class="figure-grid"><div class="figure"><img src="../assets/final-project/final-project-1.png" alt="Opening scene. Park, tree, bench, the man explains he has lost his bag."><div class="figure-caption">Opening scene. Park, tree, bench, the man explains he has lost his bag.</div></div><div class="figure"><img src="../assets/final-project/final-project-tree-puzzle.png" alt="A puzzle setup: an apple high in the tree, a seagull, the man saying &quot;Damn, that&#x27;s tall.&quot; Standard point-and-click logic, find a way to get the apple."><div class="figure-caption">A puzzle setup: an apple high in the tree, a seagull, the man saying "Damn, that's tall." Standard point-and-click logic, find a way to get the apple.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Full game architecture, not a tech demo</h2><p>This is not a single scene or a vertical slice. Final Project ships with:</p><ul><li><strong>Multiple scenes</strong> with scene transitions and persistent state.</li><li><strong>Hover-to-identify hotspots.</strong> Mouse over an object; its name appears. Standard adventure-game UX.</li><li><strong>Dialogue system</strong> with character labels (so the player always knows who is speaking).</li><li><strong>Pause menu</strong> with Resume / Options / Load / Quit.</li><li><strong>Save and load.</strong> Game state persists across sessions.</li></ul><div class="figure-grid"><div class="figure"><img src="../assets/final-project/final-project-bench-hover.png" alt="Hover identification. The bench is labelled because the cursor is over it."><div class="figure-caption">Hover identification. The bench is labelled because the cursor is over it.</div></div><div class="figure"><img src="../assets/final-project/final-project-menu.png" alt="Pause menu. Resume / Options / Load / Quit. Real game architecture, not a tech demo."><div class="figure-caption">Pause menu. Resume / Options / Load / Quit. Real game architecture, not a tech demo.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Two distinct art directions, one shared world</h2><p>Final Project is deliberately hand-illustrated, sketchy outlines, flat coloring, comic-strip framing. The character's facial expressions change frame by frame across scenes. This is the opposite aesthetic of <a href="sidescroller.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">SideScroller</a>'s glossy 3D-rendered look. Both games are by me. Both contain Jimmy. The art directions diverge because the games are different formats, and committing to two distinct visual styles cleanly across one body of work is, I think, the most interesting design fact about these two pieces.</p><div class="figure"><img src="../assets/final-project/final-project-jimmy.png" alt="Jimmy arrives. The same character from SideScroller, small figure, blue cap, floppy grey hair, labelled here so the player knows who he is."><div class="figure-caption">Jimmy arrives. The same character from SideScroller, small figure, blue cap, floppy grey hair, labelled here so the player knows who he is.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What's mine, what's the framework</h2><p>Same disclosure as <a href="sidescroller.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">SideScroller</a>:</p><ul><li><strong>Built on Adventure Creator.</strong> A respected commercial Unity asset for point-and-click games, the dialogue engine, inventory, save/load scaffolding, and hotspot management came from the framework.</li><li><strong>My contribution:</strong> illustration sourcing and art direction, puzzle design, dialogue writing, scene composition, multi-scene flow, narrative continuity with SideScroller.</li><li><strong>Today</strong>, I would build the dialogue, hotspot, and save/load systems myself, I have grown past needing the framework. The work stands as evidence of <em>game design</em> and <em>narrative continuity across multiple projects</em>, not engineering depth.</li></ul></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Unity</span><span>C#</span><span>Adventure Creator framework</span><span>Puzzle design</span><span>Narrative scripting</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Two distinct art directions, executed.</strong> Most people commit to one. I committed to two within the same MA body of work.</li><li><strong>Character continuity across formats.</strong> Jimmy appearing here means the games are not isolated; they are a small connected universe.</li><li><strong>Full point-and-click delivery.</strong> Real menu, real save/load, real hover UX. Ships as a complete game.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="sidescroller.html">
+        <div class="tag">Solo Game</div>
+        <div class="title">SideScroller</div>
+        <div class="desc">The other MA piece. Same protagonist, completely different art direction and format.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

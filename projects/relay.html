@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relay · Ritwik Sharma</title>
+  <meta name="description" content="A channel-agnostic enterprise report system. Aggregates data from multiple dashboards, runs LLM analysis on the compiled data, and delivers a formatted PDF repo">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">AI Systems · Enterprise Prototype · Solo</span></div>
+    <h1 class="cs-title">Relay</h1>
+    <p class="cs-lede">A channel-agnostic enterprise report system. Aggregates data from multiple dashboards, runs LLM analysis on the compiled data, and delivers a formatted PDF report inline in Telegram, Discord, or Teams. Working prototype themed around public health surveillance with simulated data.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, end-to-end</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--warn);">●</span> Demo / Prototype</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Channels</div>
+        <div class="value">Telegram, Discord (live)<br>Teams (in progress)</div>
+      </div>
+      <div class="item">
+        <div class="label">Demo</div>
+        <div class="value"><span class="faint">on request</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>Relay is the system underneath a chat message. A non-technical user types <code>/start</code> into a Telegram conversation, presses one button, and receives a compiled, AI-analyzed, formatted PDF report aggregated from multiple data sources. The chat interface hides everything else.</p><p>The interesting work is what happens between the button press and the PDF: <strong>multi-source aggregation, LLM-driven executive summary, anomaly flagging, and channel-specific formatting.</strong> The Telegram interface is one of several adapters; the same backend can deliver to Discord, and Teams support is in progress.</p><div class="figure-grid"><div class="figure"><img src="../assets/relay/relay-telegram-2.png" alt="The Telegram interface. Bot greeting, &quot;Generate Full Report + PDF&quot; button, immediate compiled output."><div class="figure-caption">The Telegram interface. Bot greeting, "Generate Full Report + PDF" button, immediate compiled output.</div></div><div class="figure"><img src="../assets/relay/relay-telegram-1.png" alt="The compiled report streaming back, with state-by-state metrics, severity color coding, and a PDF attachment."><div class="figure-caption">The compiled report streaming back, with state-by-state metrics, severity color coding, and a PDF attachment.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>The framing</h2><p>I built Relay as a working prototype demonstrating a channel-agnostic enterprise report system. The current demo is themed around <strong>public health surveillance</strong>: a domain where multiple dashboards (case reports, immunization coverage, sentinel surveillance, training rollouts) need to be aggregated, analyzed, and routed to decision-makers who do not log into dashboards.</p><p><strong>All data shown in the demo is simulated.</strong> The system is real and production-shaped; the numbers are illustrative. The architecture is the deliverable.</p><div class="figure"><img src="../assets/relay/relay-report-output.png" alt="A complete generated report ends with the source link and an automatic PDF attachment. Same content, two delivery formats, single click."><div class="figure-caption">A complete generated report ends with the source link and an automatic PDF attachment. Same content, two delivery formats, single click.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Architecture</h2><p>Hub-and-spoke. A single backend pulls from N data sources, runs analysis, generates the artifact (PDF), and delivers it through M channel adapters.</p><div class="arch"><pre>  Data sources                  Relay backend              Channels
+  ┌─────────────┐                                          ┌──────────────┐
+  │  Source A   │──────┐                              ┌──→ │  Telegram    │
+  └─────────────┘      │                              │    └──────────────┘
+  ┌─────────────┐      │   ┌────────────────────┐    │    ┌──────────────┐
+  │  Source B   │──────┼──→│   Aggregator       │    ├──→ │  Discord     │
+  └─────────────┘      │   │   LLM analyzer     │────┤    └──────────────┘
+  ┌─────────────┐      │   │   PDF generator    │    │    ┌──────────────┐
+  │  Source C   │──────┘   └────────────────────┘    └──→ │  Teams (WIP) │
+  └─────────────┘                                          └──────────────┘</pre></div><p>Adding a new source means writing one adapter. Adding a new channel means writing one adapter. The aggregator, the analyzer, and the PDF generator stay the same. This is the same architectural pattern as Soup: one backend, many surfaces.</p></div></section><section class="cs-section"><div class="wrap-narrow"><h2>The LLM layer</h2><p>The compiled report is not just numbers. An LLM analysis pass runs over the aggregated data and produces a written executive summary, named critical alerts, and recommended actions. The output is constrained to specific structural slots (alerts go in alerts, summaries go in summary) and the underlying numbers are not regenerated, the LLM only writes <em>about</em> them, never <em>over</em> them.</p><div class="callout"><p><strong>Why this matters:</strong> the same architecture works for any domain where multiple data sources need to be compiled, analyzed, and routed to decision-makers who do not log into dashboards. Public health is the demo. Field operations, security, supply chain, customer success: same shape.</p></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Python</span><span>Telegram Bot API</span><span>Discord.js</span><span>Microsoft Graph (Teams, WIP)</span><span>PDF generation</span><span>LLM orchestration</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Enterprise system thinking.</strong> Multi-source aggregation, channel adapters, formatted artifact delivery.</li><li><strong>LLM as analysis layer.</strong> Used where it adds value (qualitative summarization) and not where it would hallucinate (the actual numbers).</li><li><strong>Production-shaped prototype.</strong> Generates real artifacts (PDFs), runs on real infrastructure, can be deployed against real data sources.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Soup</div>
+        <div class="desc">Same hub-and-spoke pattern, applied to a community platform.</div>
+      </a>
+      <a href="zombita.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Zombita</div>
+        <div class="desc">Persistent agent with memory and mood. The other side of "LLM as building block."</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

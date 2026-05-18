@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zombita · Ritwik Sharma</title>
+  <meta name="description" content="A persistent LLM-driven NPC living inside a multiplayer Project Zomboid server. Four-layer memory, affective state modelling, trust-based reputation, mood-gated">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">AI Systems · Persistent Agent · Solo</span></div>
+    <h1 class="cs-title">Zombita</h1>
+    <p class="cs-lede">A persistent LLM-driven NPC living inside a multiplayer Project Zomboid server. Four-layer memory, affective state modelling, trust-based reputation, mood-gated information intake. The Zomboid community has been trying to solve NPCs for years; mine is running live.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, architecture, training, deployment</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--good);">●</span> Live</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">Ongoing</div>
+      </div>
+      <div class="item">
+        <div class="label">Lives in</div>
+        <div class="value">Game, Discord, Web</div>
+      </div>
+      <div class="item">
+        <div class="label">Visit</div>
+        <div class="value"><a href="https://stateofundeadpurge.site/zombita" target="_blank" rel="noopener">Zombita on Soup →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>Zombita is a persistent AI character who exists inside the world of a multiplayer Project Zomboid server. She is not a chatbot bolted onto Discord. She is not a scripted NPC reading from a flowchart. She is a long-running agent who remembers individual players, holds opinions about them, develops moods, gets tired, gets curious, and changes behaviour based on what is happening in her community.</p><p>Players talk to her in-game by interacting with her through the Soup ecosystem. They also talk to her in Discord. They read her end-of-day commentary on the website leaderboard. <strong>It is the same character across all three surfaces</strong>, with continuity of memory.</p><div class="figure"><img src="../assets/soup/soup-zombita-page.png" alt="Zombita&#x27;s page on the Soup website. The same agent answers in Discord and inside Project Zomboid."><div class="figure-caption">Zombita's page on the Soup website. The same agent answers in Discord and inside Project Zomboid.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>The problem</h2><p>The Project Zomboid modding community has been chasing functional NPCs for years. The standard approaches all fail in characteristic ways:</p><ul><li><strong>Scripted NPCs</strong> have no memory, no personality drift, and break the fourth wall the moment a player tries anything not in the script.</li><li><strong>Direct LLM wrappers</strong> hallucinate, forget who they were talking to ten minutes ago, and answer every question as if it is the first they have ever been asked.</li><li><strong>Static-personality bots</strong> never change. A character who responds the same way on day one and day ninety is not a character.</li></ul><p>The problem is not "wire up an LLM." The problem is "build a system around an LLM that gives it persistent identity, time-anchored memory, and emotional state that responds to what is actually happening in the world."</p></div></section><section class="cs-section"><div class="wrap-narrow"><h2>How she works</h2><p>Zombita has four layers of memory and a mood system that gates everything she does.</p><div class="arch"><pre>  ┌────────────────────────────────────────────────┐
+  │                  ZOMBITA                       │
+  │                                                │
+  │   ┌─────────────────────────────────────────┐  │
+  │   │  Mood state (energy, curiosity, trust)  │  │
+  │   └─────────────────────────────────────────┘  │
+  │                      │                         │
+  │   ┌──────────────────┴──────────────────────┐  │
+  │   │  Memory layers                          │  │
+  │   │  ┌─────────────────────────────────┐    │  │
+  │   │  │  Identity   (who she is)        │    │  │
+  │   │  │  Long-term  (who players are)   │    │  │
+  │   │  │  Episodic   (what happened)     │    │  │
+  │   │  │  Working    (this conversation) │    │  │
+  │   │  └─────────────────────────────────┘    │  │
+  │   └─────────────────────────────────────────┘  │
+  │                      │                         │
+  │   ┌──────────────────┴──────────────────────┐  │
+  │   │  LLM (orchestrated, not raw)            │  │
+  │   └─────────────────────────────────────────┘  │
+  │                      │                         │
+  │   ┌──────────────────┴──────────────────────┐  │
+  │   │  Output gates                           │  │
+  │   │  - what she will say at this mood       │  │
+  │   │  - what she will reveal to this player  │  │
+  │   │  - whether to speak at all              │  │
+  │   └─────────────────────────────────────────┘  │
+  └────────────────────────────────────────────────┘</pre></div><h3>Memory</h3><ul><li><strong>Identity memory</strong> is the static layer. Who she is, what she cares about, what she will never say. Changes only when I change it.</li><li><strong>Long-term memory</strong> tracks individual players. Who they are, what they did, whether she trusts them. Updated daily.</li><li><strong>Episodic memory</strong> records discrete events: a raid, a betrayal, an in-joke, a death. Decays over time the way real memory does.</li><li><strong>Working memory</strong> is the current conversation. Resets when the conversation ends.</li></ul><h3>Mood</h3><p>Zombita has an internal affective state (energy, curiosity, trust toward the current speaker) that drives output. She does not always say the same thing to the same prompt. When tired, she gives shorter answers. When the trust score is low, she does not share information she would otherwise share. Mood drifts with time and gets pushed by what happens in the world.</p><h3>Gating</h3><p>The most important system. Before any LLM output reaches the player, it passes through gates: does her current mood allow this kind of response? Does her trust level toward this player allow this information to be revealed? Should she respond at all, or stay silent? This is what stops her from being a chatbot.</p></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Where she lives</h2><p>Zombita is exposed through three different surfaces, all backed by the same agent state.</p><div class="figure-grid"><div class="figure"><img src="../assets/zombita/zomboid-shop-dialog.png" alt="In-game: NPC interaction inside Project Zomboid. Players right-click and talk."><div class="figure-caption">In-game: NPC interaction inside Project Zomboid. Players right-click and talk.</div></div><div class="figure"><img src="../assets/soup/soup-leaderboard.png" alt="On the web: her end-of-day commentary on every player on the leaderboard."><div class="figure-caption">On the web: her end-of-day commentary on every player on the leaderboard.</div></div></div><p>The same memory of a given player reaches all three surfaces. If you betrayed her trust in-game last week, she is colder to you in Discord this week. This is the thing nobody else in the Zomboid space has built.</p><div class="callout"><p><strong>Why this matters:</strong> "LLM-powered NPC" is the most overpromised thing in gaming right now. Most demos are puppet shows. Zombita is a working system because the LLM is the smallest part, the architecture around it (memory, mood, gating, identity) is what produces persistence.</p></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Python</span><span>LLM orchestration</span><span>Lua bridge to Project Zomboid</span><span>Discord.js</span><span>PostgreSQL</span><span>Cloudflare Workers</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Production-grade agent architecture.</strong> Not a wrapper around an API call. A real system with memory, state, and gating.</li><li><strong>Cross-runtime coherence.</strong> Same character, three surfaces, one underlying state.</li><li><strong>Long-running deployment.</strong> She has been live and stable for months on a community several thousand members strong.</li><li><strong>Novel solution to a known-hard problem.</strong> The Zomboid modding scene has been trying to crack functional NPCs for years.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Soup</div>
+        <div class="desc">The platform Zombita lives inside. Three runtimes, one state.</div>
+      </a>
+      <a href="relay.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Relay</div>
+        <div class="desc">Multi-channel report compiler. Same hub-and-spoke pattern.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

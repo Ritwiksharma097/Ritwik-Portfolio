@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Photobooths · Ritwik Sharma</title>
+  <meta name="description" content="AI-driven photobooth kiosks deployed at major Indian airport hubs and brand venues. Travellers and event attendees walk up, get photographed, pick a style, and ">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Installation · AI · Public Deployment</span></div>
+    <h1 class="cs-title">AI Photobooths</h1>
+    <p class="cs-lede">AI-driven photobooth kiosks deployed at major Indian airport hubs and brand venues. Travellers and event attendees walk up, get photographed, pick a style, and receive an AI-generated portrait themed around iconic local visuals or branded experiences. Several deployments live across multiple venue types.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo software, deployed installations</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--good);">●</span> Deployed at major airport hubs</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2024 – 2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Touchscreen kiosks with live capture</div>
+      </div>
+      <div class="item">
+        <div class="label">Venues</div>
+        <div class="value">Airport terminals and brand events</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>AI photobooths are vertical-screen touchscreen kiosks that integrate live photo capture, on-device or cloud AI portrait generation, and themed output. A person walks up, the kiosk captures their image, they select a style or theme, and a stylised AI-composited portrait is returned in seconds. Designed for unattended use in high-traffic public spaces.</p><div class="figure"><video src="../assets/photobooths/photobooth-airport.mp4" poster="../assets/photobooths/photobooth-airport-1.jpg" controls muted loop playsinline preload="metadata"></video><div class="figure-caption">AI photobooth deployment at Delhi Indira Gandhi International Airport (Terminal 1, GMR-operated). Player selects a "photostyle" themed around iconic airport visuals; the AI generates a portrait composited into the scene.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>The airport installation</h2><p>The Terminal 1 photobooth offers three photostyle themes: <strong>Airport Terminal</strong> (the new T1 architecture), <strong>Sound of Silence</strong> (an iconic sculpture at the airport), and <strong>Life's Journey</strong> (cultural Indian artwork). A traveller stands in front of the kiosk, taps a style, the camera fires, the AI runs, and within a few seconds they see themselves composited into the selected scene. They can scan a QR code to receive the image.</p><div class="figure-grid"><div class="figure"><img src="../assets/photobooths/photobooth-airport-1.jpg" alt="Style selection screen. Three themed options framed around iconic local visuals."><div class="figure-caption">Style selection screen. Three themed options framed around iconic local visuals.</div></div><div class="figure"><img src="../assets/photobooths/photobooth-airport-2.jpg" alt="Live capture. Visitor is photographed against the kiosk&#x27;s integrated lighting."><div class="figure-caption">Live capture. Visitor is photographed against the kiosk's integrated lighting.</div></div><div class="figure"><img src="../assets/photobooths/photobooth-airport-3.jpg" alt="Result. Visitor composited into the &quot;Life&#x27;s Journey&quot; theme with the painted elephant artwork."><div class="figure-caption">Result. Visitor composited into the "Life's Journey" theme with the painted elephant artwork.</div></div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>The pledge kiosk</h2><p>A different deployment, same underlying platform. The "Take Your Pledge" kiosk was built around Indian patriotic theming, Independence Day and Republic Day brand activations at GMR airport plazas. Visitors fill in their name, email, and phone, take a photo, and the system returns a stylised personalised pledge card that they can share or print.</p><div class="figure"><video src="../assets/photobooths/photobooth-pledge.mp4" poster="../assets/photobooths/photobooth-pledge-2.jpg" controls muted loop playsinline preload="metadata"></video><div class="figure-caption">"Take Your Pledge" kiosk at a GMR-operated airport plaza. Form capture, photo capture, themed personalised output.</div></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What makes this hard</h2><p>On the surface "photobooth" sounds trivial. The actual engineering work is in everything around the AI:</p><ul><li><strong>Unattended robustness.</strong> No staff member is going to reset the kiosk if it crashes at 2 AM in an airport. The application has to recover from network failures, camera disconnects, AI service timeouts, and disk-full conditions automatically.</li><li><strong>Image pipeline timing.</strong> From "tap capture" to "result shown" has to be under ten seconds. Otherwise the line behind you starts walking away.</li><li><strong>Output quality is the entire product.</strong> A bad AI portrait is worse than no photo. The system has to handle bad lighting, unusual poses, multiple people in frame, and partial occlusions and still return something the visitor will share.</li><li><strong>Privacy.</strong> Photos are captured on a public kiosk. They have to be deleted, retention controlled, and access logged.</li></ul></div></section><section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Unity / native touchscreen UI</span><span>Image capture pipeline</span><span>AI image generation (cloud API)</span><span>QR-based delivery</span><span>Kiosk hardware integration</span></div></div></section><section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>AI-in-production deployment.</strong> Image generation hosted somewhere; my job is to make it land in a public installation reliably.</li><li><strong>High-traffic public installation discipline.</strong> Recovery, retry, queueing, throttling.</li><li><strong>Multi-format brand work.</strong> Same platform retargeted to different venues, themes, and audiences.</li></ul></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="pirate-boat.html">
+        <div class="tag">Installation</div>
+        <div class="title">Pirate Boat</div>
+        <div class="desc">Another public installation. Different mechanic, same operational requirements.</div>
+      </a>
+      <a href="batak.html">
+        <div class="tag">Installation</div>
+        <div class="title">Batak</div>
+        <div class="desc">Hardware-integrated public installation. Recurring deployment.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
