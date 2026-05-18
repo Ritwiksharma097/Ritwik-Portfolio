@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEOM Sindalah Tower Lighting &middot; Ritwik Sharma</title>
+  <meta name="description" content="A distributed lighting control system for NEOM Sindalah. 14 networked computers, 42 LED towers, MQTT, Unity tablet frontend, TouchDesigner backend. Shipped in three weeks, solo software engineer.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Distributed Systems &middot; Installation &middot; Solo software engineer</span></div>
+    <h1 class="cs-title">NEOM Sindalah Tower Lighting</h1>
+    <p class="cs-lede">A distributed real-time lighting control system for the Sindalah island development, NEOM. One Surface Pro tablet running a Unity frontend orchestrates 13 networked TouchDesigner machines (plus a master node) over MQTT, driving 42 LED-illuminated towers across the island. Designed, built, and deployed on-site as solo software engineer in three weeks.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo software engineer</div>
+      </div>
+      <div class="item">
+        <div class="label">Client</div>
+        <div class="value">NEOM Sindalah</div>
+      </div>
+      <div class="item">
+        <div class="label">Location</div>
+        <div class="value">Sindalah Island, Saudi Arabia</div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2024 &middot; 3 weeks on-site</div>
+      </div>
+      <div class="item">
+        <div class="label">Scale</div>
+        <div class="value">14 PCs &middot; 42 LED towers</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value mono"><span style="color: var(--good);">&#9679;</span> Deployed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What it is</h2><p>Sindalah is the first completed island of the NEOM development on the Red Sea coast of Saudi Arabia. Across the island, 42 architectural towers, glowing marble monoliths, illuminated entrance pillars, sculpted obelisks, are lit by programmable LED arrays. Each tower is wired to one of 13 building-level Asus PCs distributed across the site, all interconnected over LAN to a master coordinator and a single tablet that runs the show.</p><p>I designed the software stack end to end: the Unity-based operator interface on the Surface Pro, the TouchDesigner control runtimes on every building PC, the MQTT pub/sub layer that ties them together, the DMX output that drives the actual fixtures, and the on-site network configuration that made it all reliable in production.</p><div class="figure"><img src="../assets/neom/neom-unity-control-panel.png" alt="The Unity control panel running on a Surface Pro tablet. NEOM branding top-right, building selectors arranged in a grid, sci-fi UI treatment matching the development's aesthetic."><div class="figure-caption">The operator interface: Unity application running on a Surface Pro tablet. The 13 building selectors map to the 13 building PCs distributed across the island. One tap selects a building, the next layer drills into individual tower groups and scene playback.</div></div></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>The architecture</h2><p>Three layers: a single operator surface, a distributed control fleet, and the physical lighting hardware.</p><div class="arch"><pre>  Operator                Distributed runtimes              Physical
+  &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+  &#9474;  Surface Pro                                                  &#9474;
+  &#9474;  Unity tablet     MQTT       Master PC       LAN              &#9474;
+  &#9474;  control panel    pub/sub    (coordinator)   broadcast        &#9474;
+  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9474;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9474;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9474;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+                  &#9474;       &#9474;            &#9474;
+                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+              Building PC 1   Building PC 2   &#8230;   Building PC 13      &#9474;
+              TouchDesigner   TouchDesigner       TouchDesigner          &#9474;
+              MQTT subscribe  MQTT subscribe      MQTT subscribe         &#9474;
+              DMX output      DMX output          DMX output             &#9474;
+                  &#9474;               &#9474;                   &#9474;              &#9474;
+                  &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+              42 LED towers, grouped by building, addressed by fixture ID
+              (marble pillars, obelisks, stair washes, facade strips)</pre></div><p>The Unity tablet does not talk to the lights directly. It publishes intent ("Building 13, scene A, tempo 0.7") to MQTT. The relevant TouchDesigner instance subscribes to its building topic, translates the intent into per-fixture DMX values, and streams them out over the lighting protocol. The master PC handles fleet-wide synchronisation and any cross-building scenes that need to play in unison.</p><p>This is the same architectural shape as the agent ecosystem behind <a href="soup.html">Soup</a> and the channel-adapter pattern behind <a href="relay.html">Relay</a>: one orchestration brain, many specialised runtimes, message bus in the middle. NEOM is the version where the runtimes are physically distributed across an island and the output is real light.</p></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>The TouchDesigner backend</h2><p>Each building PC runs an identically-structured TouchDesigner project, parameterised by its building ID. The project subscribes to its MQTT topic ("Building13"), receives commands, runs them through a switching layer, looks up the correct DMX channel ranges for that building's specific fixtures, and outputs to the lighting controllers.</p><div class="figure"><img src="../assets/neom/neom-touchdesigner.png" alt="The TouchDesigner project for Building 13. Python MQTT callbacks, node-graph signal chain ending in multiple DMX-out nodes, one per fixture group."><div class="figure-caption">The control runtime for one building. Python MQTT callbacks at the top, signal chain in the middle (constants, switch, lookup, math, shuffle, rename, pattern, lookup, DMX out), feeding multiple parallel DMX output nodes, one per fixture group in that building.</div></div><p>The reason each building is its own project instead of one giant fleet project: failure isolation. If a building loses network or a PC reboots, the rest of the island keeps running. The master PC notices the missing subscriber and the operator sees that one building dropped, but Buildings 1 through 12 carry on without interruption.</p></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>Scale</h2><div class="figure"><img src="../assets/neom/neom-site-map.png" alt="Site plan of Sindalah Island with the 13 building locations highlighted as numbered grey markers (1 through 13), overlaid on the building footprint layout, with sub-tower numbering 01 through 23."><div class="figure-caption">Sindalah's layout. The 13 numbered markers in green are the building PC sites. The thinner annotations (01-23) are individual tower groupings within each building's responsibility. LAN cable was run between every building, with the master at the centre.</div></div><p>The physical scale matters because it shaped every engineering decision:</p><ul><li><strong>LAN over Wi-Fi.</strong> The island is large enough that wireless was unreliable end-to-end. Hardwired LAN to every building was non-negotiable.</li><li><strong>MQTT over direct sockets.</strong> Pub/sub means the operator does not need to know which IP each PC is on; PCs can reconnect after reboots without manual intervention; the master can broadcast cross-building scenes without writing N-to-N logic.</li><li><strong>Per-building autonomy.</strong> If the LAN flaps between two buildings, both keep running. The system is partition-tolerant by design.</li></ul></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>On the ground</h2><p>I was on-site at Sindalah for the three-week deployment, coordinating with the lighting team and commissioning every building one by one. The construction-phase photos give a sense of what the towers actually look like, glowing through translucent marble, washing illuminated stair treads, internally lit obelisks acting as architectural landmarks.</p><div class="figure-grid"><div class="figure"><img src="../assets/neom/neom-tower-pink.jpg" alt="A tall marble-clad obelisk lit in deep pink and red from the inside, with warm yellow LED strips wrapping the stair base."><div class="figure-caption">One of the marble obelisks during commissioning. The colour is dynamic, the same fixture can sweep through any RGB scene the operator selects.</div></div><div class="figure"><img src="../assets/neom/neom-marble-entrance.jpg" alt="Night view of a building entrance with an illuminated marble pillar (cream and rust veined) glowing from within, warm-lit stair treads, and a slatted ceiling overhead."><div class="figure-caption">A building entrance at night. The vertical marble pillar is back-lit by an internal fixture; the stair treads are independent strip lighting; both are addressed separately by the same building runtime.</div></div></div><div class="figure"><img src="../assets/neom/neom-vault-construction.jpg" alt="A high-end storefront (&ldquo;The Vault&rdquo;) during construction. Warm LED strip embedded along the planter edge, contractors visible inside in hi-vis vests."><div class="figure-caption">A storefront during commissioning. The warm LED line along the planter edge is one of the dozens of fixture types the system addresses.</div></div></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>What this project demonstrates</h2><ul><li><strong>Distributed real-time systems at venue scale.</strong> 14 networked machines, pub/sub messaging, hardware output, fault tolerance, all running unattended for the public phase of the development.</li><li><strong>Cross-stack delivery.</strong> Unity for the operator surface, TouchDesigner for the control runtimes, MQTT for the bus, DMX for the hardware, LAN for the transport. Each piece chosen for what it is good at.</li><li><strong>Shipping under serious constraints.</strong> Three weeks, on-site, solo, for a state-tier client. The system was operational at the end of the build window.</li><li><strong>Working at a high-trust venue.</strong> NEOM Sindalah is a closed development. The work environment, the access controls, the coordination with multiple contractor teams, all part of the deliverable.</li></ul></div></section>
+
+<section class="cs-section"><div class="wrap-narrow"><h2>Stack</h2><div class="tech-stack"><span>Unity</span><span>C#</span><span>TouchDesigner</span><span>Python</span><span>MQTT</span><span>DMX</span><span>LAN networking</span><span>Surface Pro</span></div></div></section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Soup</div>
+        <div class="desc">Same architectural pattern: one orchestration brain, many runtimes, message bus in the middle.</div>
+      </a>
+      <a href="relay.html">
+        <div class="tag">AI Systems</div>
+        <div class="title">Relay</div>
+        <div class="desc">Hub-and-spoke again, this time for enterprise reports across chat channels.</div>
+      </a>
+      <a href="pirate-boat.html">
+        <div class="tag">Installations</div>
+        <div class="title">Open-Water Boat Racing</div>
+        <div class="desc">Another deployed installation, this one with custom hardware controllers in a retail venue.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>&copy; 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
