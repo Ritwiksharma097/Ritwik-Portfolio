@@ -221,6 +221,11 @@
       <li><strong>Events and more.</strong> Dawn of the Dead horde nights, boss zombies, notoriety and bounties, bus travel between 23 stations, and a live 2D/3D web map.</li>
     </ul>
 
+    <div class="figure">
+      <img src="../assets/soup/events-generator.jpg" alt="Server chat: Zombita thanks a player for fitting parts to a community generator, warns Daisy County to get under a roof, and Queen Dusk says: Look up, little ones.">
+      <div class="figure-caption">The server's chat on a normal evening. A player with the Electrician card fits kits to a community generator and Zombita thanks them by name. She counts down a world event over Daisy County, and Queen Dusk, the server's villain, arrives with it.</div>
+    </div>
+
     <h3>Engine work</h3>
     <p>Running all this live means knowing the engine. I traced a vanilla Build 42 crash (a null slot in hen hutch packets on chunk unload) into the 42.21 jar and shipped a guard. I found that command strings over 32 KB crash every client. I wrote an event profiler that wraps every handler across all mods, which found an 83 s freeze and a 148 s blocking call in third-party mods; fixes went to their authors. And I worked out what stops a mod being removed from a live Build 42 save, and built a fix, proven on test servers.</p>
 
