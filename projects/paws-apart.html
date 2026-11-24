@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws Apart · Ritwik Sharma</title>
+  <meta name="description" content="A cosy red panda logic puzzle for phones, in Android beta, and also playable on the in-game phone on my Project Zomboid server.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paws Apart · Ritwik Sharma">
+  <meta property="og:description" content="A cosy red panda logic puzzle for phones, in Android beta, and also playable on the in-game phone on my Project Zomboid server.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Mobile Game · Solo · Android beta</span></div>
+    <h1 class="cs-title">Paws Apart</h1>
+    <p class="cs-lede">A cosy logic puzzle about red pandas who need their space. Place one panda in every row, column and colour, with no two touching, not even diagonally. It is in beta testing on Android, and you can also play it on the in-game phone on my Project Zomboid server.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design, code and art</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value"><span class="mono">Android beta testing; store launch next</span></div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Stack</div>
+        <div class="value">TypeScript, React, Capacitor</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Logic puzzle for phones</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What it is</h2>
+    <p>Tap a square to mark it, double tap to place a panda. Each level gives you three bamboo lives, plus hints, undo and a panda helper. There are 200 generated levels from 4x4 to 8x8, and each has exactly one solution you can reach by logic alone, with no guessing. A daily puzzle and streaks bring players back.</p>
+    <p>An interactive tutorial teaches the rules. The colour palette is tested under simulated protanopia, deuteranopia and tritanopia, with optional patterns on top. The panda is my own Blender model and renders, with ten expressions. The rules engine has 43 unit tests.</p>
+    <div class="figure"><img src="../assets/paws-apart/screens.jpg" alt="Gameplay, the tutorial and the daily streak."><div class="figure-caption">Gameplay, the tutorial and the daily streak.</div></div>
+    <div class="figure"><img src="../assets/paws-apart/feature.jpg" alt="The store feature graphic."><div class="figure-caption">The store feature graphic.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>The same game inside a zombie apocalypse</h2>
+    <p>Paws Apart is also an app on the touch phone in my <a href="soup.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Project Zomboid mod</a>. I ported the engine to Kahlua, the game's Lua, keeping the same levels, scoring, lives, hints and daily puzzle, so a board plays the same in game as on a real phone. Players' levels go on the server leaderboard, and players beta tested it there.</p>
+    <p>Kahlua has its traps. Its <code>%</code> operator breaks on large numbers, which once caused 205 draw errors a minute, so the port does its own modulo with division and floor.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Stack</h2>
+    <div class="tech-stack"><span>TypeScript</span><span>React</span><span>Zustand</span><span>Vite</span><span>Capacitor (Android)</span><span>PWA</span><span>Blender</span><span>Kahlua Lua port</span><span>Vitest</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this project demonstrates</h2>
+    <ul>
+      <li><strong>A complete small game.</strong> Levels, tutorial, daily puzzle, streaks, accessibility and store assets, built solo.</li>
+      <li><strong>Puzzle generation.</strong> 200 single-solution levels that can be solved by logic alone.</li>
+      <li><strong>One game, two runtimes.</strong> The same rules in TypeScript on phones and in Lua inside Project Zomboid.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">Live System</div>
+        <div class="title">Soup</div>
+        <div class="desc">The platform under my Zomboid server, where the in-game phone lives.</div>
+      </a>
+      <a href="motion-games.html">
+        <div class="tag">Motion Game</div>
+        <div class="title">Panda Games</div>
+        <div class="desc">Party games you play with your body.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

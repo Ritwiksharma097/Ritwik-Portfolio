@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prison Sandbox · Ritwik Sharma</title>
+  <meta name="description" content="A turn-based prison life sim in Unity 6 where every prisoner, guard and staff member is a simulated person, and every way out runs through them.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prison Sandbox · Ritwik Sharma">
+  <meta property="og:description" content="A turn-based prison life sim in Unity 6 where every prisoner, guard and staff member is a simulated person, and every way out runs through them.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Game · Solo · In development</span></div>
+    <h1 class="cs-title">Prison Sandbox</h1>
+    <p class="cs-lede">A turn-based prison life sim in Unity 6. Every prisoner, guard and staff member is a simulated person with traits, feelings, gossip and a backstory, and every way out runs through them.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design and code</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value"><span class="mono">Playable Windows build; cast and art in progress</span></div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Engine</div>
+        <div class="value">Unity 6 (URP), C#</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Isometric, turn-based life sim</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What it is</h2>
+    <p>You arrive as a new prisoner with a few action points a day. You click people, objects and doors, and spend your points on work, talk, trade and trouble. There is no crafting menu. Items and know-how come through people, so the game is about who you know and what they believe about you.</p>
+    <p>Guards have a type (brutal, lazy or coward) and keep track of how much they respect you. Prisoners have their own way of passing on news: honest, sneaky, liar or paranoid. So a rumour you plant spreads, drifts as it moves, and may be believed or checked. Whispers is where you hear rumours and check them.</p>
+    <p>There are seven ways out: a tunnel, the sick bay, the laundry, a riot, a guard's uniform, parole, and the Warden's desk. Each one needs the right people on your side.</p>
+    <div class="figure"><img src="../assets/prison-sandbox/guard-card.jpg" alt="Day 1 in the cell block. Officer Reyes is a coward, his respect for you is 50, and he is watching the room. Every person has a card like this."><div class="figure-caption">Day 1 in the cell block. Officer Reyes is a coward, his respect for you is 50, and he is watching the room. Every person has a card like this.</div></div>
+    <div class="figure-grid"><div class="figure"><img src="../assets/prison-sandbox/person-card.jpg" alt="A prisoner card in the mess hall: talk, trade, pressure, or plant a story."><div class="figure-caption">A prisoner card in the mess hall: talk, trade, pressure, or plant a story.</div></div><div class="figure"><img src="../assets/prison-sandbox/map.jpg" alt="The prison map. Click a room to go there."><div class="figure-caption">The prison map. Click a room to go there.</div></div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>How it is built</h2>
+    <p>The simulation is plain C# with no Unity code in it, and an assembly definition enforces that. Unity only draws it. The same simulation runs headless from a command-line tool, which is how I test and balance it.</p>
+    <p>All randomness goes through one seeded generator, so the same seed gives the same run. A save is a replay of the player's logged actions, and each run prints a fingerprint, so I can see at once when a change alters outcomes.</p>
+    <p>When a run ends, the Chronicle writes the story of your stay from what actually happened in it. It runs offline and gives the same story for the same run.</p>
+    <p>716 simulation tests and 146 Unity EditMode tests pass. I balance the escape routes against 6,400 automated runs before and after each change, measuring which routes get used and on what day. Every sound in the game is generated from my own code.</p>
+    <div class="figure"><img src="../assets/prison-sandbox/title.jpg" alt="The title screen."><div class="figure-caption">The title screen.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Why I built it</h2>
+    <p>It is the same thing I care about on my <a href="soup.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Project Zomboid server</a> and in my survivor NPCs: a world that keeps running by its own rules, where stories come out of the system instead of a script.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Stack</h2>
+    <div class="tech-stack"><span>Unity 6</span><span>URP</span><span>C#</span><span>.NET Standard simulation</span><span>Headless CLI</span><span>Deterministic seeds</span><span>Quaternius characters (CC0)</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this project demonstrates</h2>
+    <ul>
+      <li><strong>Systemic design.</strong> People with traits, feelings and gossip drive every outcome, including seven escape routes.</li>
+      <li><strong>Simulation architecture.</strong> An engine-free, deterministic core with replay saves and run fingerprints.</li>
+      <li><strong>Testing and balance.</strong> 716 simulation tests and 6,400-run balance passes.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="zombita.html">
+        <div class="tag">Live AI</div>
+        <div class="title">Zombita</div>
+        <div class="desc">The AI that administers my live Project Zomboid server.</div>
+      </a>
+      <a href="untamed-shadows.html">
+        <div class="tag">Game · Unreal</div>
+        <div class="title">Untamed Shadows</div>
+        <div class="desc">A tigress stealth game built on a tested C++ stealth core.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untamed Shadows · Ritwik Sharma</title>
+  <meta name="description" content="A third-person stealth game in Unreal Engine 5: a tigress hunts the poachers who took her cub, using wind, scent, mud, berries and a monkey companion.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Untamed Shadows · Ritwik Sharma">
+  <meta property="og:description" content="A third-person stealth game in Unreal Engine 5: a tigress hunts the poachers who took her cub, using wind, scent, mud, berries and a monkey companion.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Game · Solo · Unreal Engine 5 · Pre-production</span></div>
+    <h1 class="cs-title">Untamed Shadows</h1>
+    <p class="cs-lede">A third-person stealth game in Unreal Engine 5. You play a tigress hunting the poachers who took her cub, with a monkey companion who poisons their food. Each target is a small puzzle with many ways in.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design and code</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value"><span class="mono">Pre-production; first mission (the Trapper) playable</span></div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">2026 (design from 2025)</div>
+      </div>
+      <div class="item">
+        <div class="label">Engine</div>
+        <div class="value">Unreal Engine 5.8, C++</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Third-person stealth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What it is</h2>
+    <p>Guards and animals notice you by sight, light, sound and smell. Wind carries your scent, so anything downwind smells you from farther away, and rolling in mud masks it for a while. Deer and crows raise the alarm at what they see or smell, and guards go to look. Night favours the tigress, rain dulls the guards, and firelight gives them their eyes back.</p>
+    <p>You have a few tools. Red berries make a guard sick and blue ones put him to sleep, and the monkey can slip either into a pot or barrel from 20 metres. Knock down a beehive and the swarm sends guards running. Call the wolf pack to howl at the camp's edge, or roar to alert everyone within 28 metres. A pounce is silent from behind and loud from the front. There are two health modes: normal, and hardcore, where two hits kill you.</p>
+    <div class="figure"><img src="../assets/untamed-shadows/pond-monkey.jpg" alt="The tigress and her monkey in shallow water. The log on the left shows the systems at work: a crow raising the alarm, mud masking her scent so the dog loses her, and guards dropping back to unaware."><div class="figure-caption">The tigress and her monkey in shallow water. The log on the left shows the systems at work: a crow raising the alarm, mud masking her scent so the dog loses her, and guards dropping back to unaware.</div></div>
+    <div class="figure"><img src="../assets/untamed-shadows/camp-controls.jpg" alt="Sneaking up on the poachers&#x27; camp, with deer and wolves nearby. The controls sheet lists every tool."><div class="figure-caption">Sneaking up on the poachers' camp, with deer and wolves nearby. The controls sheet lists every tool.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>How it is built</h2>
+    <p>The stealth rules live in an engine-agnostic C++20 library with its own test suite of 90 test cases: perception, suspicion, light, scent, wind, poison, bodies and the monkey's rules. Unreal loads it as a plugin, so the rules can be tested and changed without the editor.</p>
+    <p>On top of it the Unreal game layer is C++ with thin Blueprints, and all tuning numbers sit in Data Assets. It covers the tigress and her input, the HUD and minimap with wind, day and night with night vision, weather from clear to heavy rain that changes sight, scent and noise, and wildlife: deer, crows, peafowl and vultures, with alarm calls.</p>
+    <div class="figure"><img src="../assets/untamed-shadows/night-vision.jpg" alt="Night vision at 2 a.m."><div class="figure-caption">Night vision at 2 a.m.</div></div>
+    <p class="figure-caption" style="border:none;background:none;padding:0;">Tiger: "Tiger rebuilt" by kenchoo (Sketchfab), CC BY 4.0. Guns by TastyTony, GoldbergR and richardsaffrie (Sketchfab), CC BY 4.0, modified. Guards: MetaHuman and UE5 mannequins (Epic Games), animations by Quaternius (CC0).</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Stack</h2>
+    <div class="tech-stack"><span>Unreal Engine 5.8</span><span>C++</span><span>C++20 stealth library</span><span>Blueprints</span><span>Data Assets</span><span>Unit tests</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this project demonstrates</h2>
+    <ul>
+      <li><strong>Stealth systems.</strong> Sight, light, sound, smell and wind, with animals that raise the alarm.</li>
+      <li><strong>Engine architecture.</strong> Game rules in a tested, engine-agnostic C++ library, with Unreal as the layer on top.</li>
+      <li><strong>Unreal Engine.</strong> C++ gameplay, weather, day and night, and wildlife in UE 5.8.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="prison-sandbox.html">
+        <div class="tag">Game · Unity</div>
+        <div class="title">Prison Sandbox</div>
+        <div class="desc">A prison life sim where every way out runs through people.</div>
+      </a>
+      <a href="zombita.html">
+        <div class="tag">Live AI</div>
+        <div class="title">Zombita</div>
+        <div class="desc">The AI that administers my live Project Zomboid server.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

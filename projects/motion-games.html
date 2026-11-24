@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panda Games · Ritwik Sharma</title>
+  <meta name="description" content="Three party-screen games you play with your body: a webcam tracks up to four children and pandas in a bamboo forest react to them.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Panda Games · Ritwik Sharma">
+  <meta property="og:description" content="Three party-screen games you play with your body: a webcam tracks up to four children and pandas in a bamboo forest react to them.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Motion Game · Solo · 2026</span></div>
+    <h1 class="cs-title">Panda Games</h1>
+    <p class="cs-lede">Three games for a party screen that you play with your body. A webcam tracks up to four children at once, both hands each, and pandas in a bamboo forest react to them. No controller and no touch.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo, design, code and 3D</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value"><span class="mono">Complete, offline Windows app</span></div>
+      </div>
+      <div class="item">
+        <div class="label">Duration</div>
+        <div class="value">November 2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Stack</div>
+        <div class="value">MediaPipe, three.js, Electron</div>
+      </div>
+      <div class="item">
+        <div class="label">Form</div>
+        <div class="value">Camera-tracked party games</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What it is</h2>
+    <p>Children wave to start. In <strong>Feed the Panda</strong>, bamboo, shoots and apples drop from the canopy, and anything a child touches flies to the panda, who munches it. In <strong>Bubble Pop</strong>, cubs float up inside soap bubbles; pop one and the cub drops, lands and toddles back to its mum. In <strong>Wake the Sleepy Panda</strong>, everyone waves, jumps and dances to fill a wake-up meter until the panda stirs, gets up, yawns and looks at them, then dozes off again.</p>
+    <div class="figure"><img src="../assets/motion-games/attract.jpg" alt="The start screen: stand in front of the screen and wave."><div class="figure-caption">The start screen: stand in front of the screen and wave.</div></div>
+    <div class="figure-grid"><div class="figure"><img src="../assets/motion-games/feed.jpg" alt="Feed the Panda."><div class="figure-caption">Feed the Panda.</div></div><div class="figure"><img src="../assets/motion-games/bubble.jpg" alt="Bubble Pop."><div class="figure-caption">Bubble Pop.</div></div><div class="figure"><img src="../assets/motion-games/wake.jpg" alt="Wake the Sleepy Panda."><div class="figure-caption">Wake the Sleepy Panda.</div></div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>How it is built</h2>
+    <p>Pose tracking runs on its own thread in a Web Worker, with GPU and CPU fallback. On an RTX 3060 the game draws about 115 frames a second and tracks about 21 times a second; on integrated graphics it holds about 55 frames. The paws glide between camera frames so movement looks smooth.</p>
+    <p>The forests are Blender-rendered plates. The pandas are live three.js models with a scripted head, eyelids and jaw, prepared in Blender by my own scripts. The whole thing ships as a full-screen offline Windows app that restarts itself if a page crashes and keeps the screen awake, so a venue can just switch it on.</p>
+    <p class="figure-caption" style="border:none;background:none;padding:0;">Panda model: "Giant Panda" by Animal Animator, CC BY 4.0.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Stack</h2>
+    <div class="tech-stack"><span>MediaPipe Pose</span><span>three.js</span><span>JavaScript</span><span>Web Workers</span><span>Blender scripting</span><span>Electron</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this project demonstrates</h2>
+    <ul>
+      <li><strong>Body-controlled play.</strong> Up to four players tracked at once with no controller.</li>
+      <li><strong>Performance.</strong> Tracking off the main thread, with a smooth frame rate on modest hardware.</li>
+      <li><strong>Shipping to a venue.</strong> An offline app built to run unattended.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="paws-apart.html">
+        <div class="tag">Mobile Game</div>
+        <div class="title">Paws Apart</div>
+        <div class="desc">A red panda logic puzzle for phones and the Zomboid in-game phone.</div>
+      </a>
+      <a href="batak.html">
+        <div class="tag">Installation</div>
+        <div class="title">Batak</div>
+        <div class="desc">Another physical, body-driven game.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
