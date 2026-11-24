@@ -205,6 +205,15 @@
       <img src="../assets/soup/liveops-panels.jpg" alt="Three Live Ops panels for one player: teleport, give item and message; cars, warnings, events and kick; and the character sheet with needs and traits.">
       <div class="figure-caption">The player panel. Teleport, give items, send a Zombita pop-up, spawn or flip a car, warn, call thunder on them, plant items in zombies, kick or ban, and open the full character sheet with needs, traits and skills, all while they play.</div>
     </div>
+
+    <h3>The admin workspace</h3>
+    <p>My admins plan and run the server in a workspace I built into the site, which works like Google Docs and Sheets. It has four kinds of document: rich-text docs, spreadsheets, kanban boards, and the server's own config files. Everything syncs live through my own WebSocket relay on Yjs, so when two admins edit the same page they see each other's cursors and changes as they type. Every document keeps a change log and versions that can be rolled back.</p>
+    <p>The config editor is the careful one. The live copy of <code>servertest.ini</code> or <code>SandboxVars.lua</code> is only a draft. Nothing touches the real file until an admin saves, the backend checks the syntax, and only then writes it, so a broken merge can never reach the running server.</p>
+
+    <div class="figure">
+      <img src="../assets/soup/workspace.jpg" alt="The admin workspace: server config files and project folders on the left, and a live document listing the server's features on the right.">
+      <div class="figure-caption">The workspace with the server's feature list open. The server's two config files sit at the top left, with project folders below them.</div>
+    </div>
   </div>
 </section>
 
