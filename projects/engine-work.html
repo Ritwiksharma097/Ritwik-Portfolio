@@ -94,10 +94,10 @@
     <h2 id="coop-crash">A vanilla Build 42 crash traced into the jar: chicken coops on chunk unload</h2>
     <p><strong>The crash.</strong> Players crashed to desktop while walking near a chicken coop:</p>
 <div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>NullPointerException ... IsoAnimal.removeFromUpdateLists() because "animal" is null
-    at IsoHutch.removeFromWorld(IsoHutch.java:1095)</pre></div>
+    at IsoHutch.removeFromWorld(IsoHutch.java:1095)</pre></div></div>
     <p><strong>What the jar showed</strong> (42.21, read class by class). <code>NetworkPlayerAI.parse(AnimalPacket)</code> does <code>animalInside.put(oldPos, null)</code> and only refills the slot when the packet names a new one. So a hen leaving the coop leaves a <code>null</code> on the client. When the chunk unloads, <code>IsoHutch.removeFromWorld</code> walks that map and crashes.</p>
     <p>A first fix that ran on <code>OnTick</code> never fired before a crash. The frame order explains why: <code>GameClient.update</code> (packets) runs, then <code>OnTickEvenPaused</code>, then <code>ProcessChunkPos</code> (the unload, where it crashes), and only then <code>OnTick</code>. So the check now runs on <code>OnTickEvenPaused</code>, the only hook between the packet and the unload:</p>
-<div class="arch"><pre>--- Rebuild one coop's animal list without empty slots. Returns how many empty slots were dropped (0 = untouched).
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>--- Rebuild one coop's animal list without empty slots. Returns how many empty slots were dropped (0 = untouched).
 function HF.clean(hutch)
     local map = hutch:getAnimalInside()
     if not map or map:size() == 0 then return 0 end
