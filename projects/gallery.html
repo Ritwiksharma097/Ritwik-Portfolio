@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery · Ritwik Sharma</title>
-  <meta name="description" content="Screenshots from State of Undead Purge, most of them taken by its players: the in-game hub and phones, Zombita, factions, the website, Discord and the admin tools.">
+  <meta name="description" content="Every video on the site, from the Project Zomboid server, the NPC System, Untamed Shadows, the motion and VR games and client installations, plus screenshots from State of Undead Purge.">
   <link rel="stylesheet" href="../style.css?v=20261124">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gallery · Ritwik Sharma">
-  <meta property="og:description" content="Screenshots from State of Undead Purge, most of them taken by its players: the in-game hub and phones, Zombita, factions, the website, Discord and the admin tools.">
+  <meta property="og:description" content="Every video on the site, from the Project Zomboid server, the NPC System, Untamed Shadows, the motion and VR games and client installations, plus screenshots from State of Undead Purge.">
   <meta property="og:url" content="https://work.ritwiksharma.com/">
   <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -25,6 +25,10 @@
   .gal-item figcaption { padding: var(--s-3) var(--s-4); border-top: 1px solid var(--border); background: var(--bg-elev-2); font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--text-faint); flex: 1; }
   .cs-section h3 { margin-top: var(--s-6); }
   .gal-credit { color: var(--text-soft); margin-top: var(--s-4); }
+  .vg { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); margin: var(--s-4) 0 var(--s-6); }
+  .vg-item video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; display: block; background: #08090c; }
+  .vg-item figcaption a { display: inline; aspect-ratio: auto; background: none; white-space: nowrap; }
+  @media (max-width: 700px) { .vg { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 600px) { .gal { grid-template-columns: 1fr; } }
 </style>
@@ -49,6 +53,7 @@
     <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
     <div class="nav-links">
       <a href="../index.html">Work</a>
+      <a href="gallery.html" class="active">Gallery</a>
       <a href="../about.html">About</a>
       <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
     </div>
@@ -57,17 +62,72 @@
 
 <section class="cs-hero">
   <div class="wrap-narrow">
-    <a class="cs-back" href="soup.html">Soup</a>
-    <div class="eyebrow"><span class="accent">Screenshots · State of Undead Purge</span></div>
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Videos &middot; Screenshots</span></div>
     <h1 class="cs-title">Gallery</h1>
-    <p class="cs-lede">Screenshots from State of Undead Purge, most of them taken by its players. Every system on these pages, as people actually use it.</p>
-    <p class="gal-credit">Most of these were taken by CiBo, Warrior and Dish, three of the server's players. Thank you all.</p>
-    <p class="gal-credit">Click any picture to open it full size. The write-ups are on the <a href="soup.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Soup</a> and <a href="zombita.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Zombita</a> pages.</p>
+    <p class="cs-lede">Every video on the site in one place, then the screenshots from State of Undead Purge, most of them taken by its players.</p>
+    <p class="gal-credit">Jump to: <a href="#videos" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Videos (27)</a> &middot; <a href="#screenshots" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Screenshots</a></p>
+    <p class="gal-credit">Most of the screenshots were taken by CiBo, Warrior and Dish, three of the server's players. Thank you all. Click any picture to open it full size.</p>
   </div>
 </section>
 
-<section class="cs-section">
+<section class="cs-section" id="videos">
   <div class="wrap">
+    <h2>Videos</h2>
+    <p class="gal-credit">Every clip on the site in one place. Each one links to the page that explains it.</p>
+    <h3>Project Zomboid: my server</h3>
+    <p class="gal-credit" style="margin-top: var(--s-2);">Clips from State of Undead Purge, the live server Soup and Zombita run on.</p>
+    <div class="vg">
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/liveops-rescue-poster.jpg" aria-label="A stuck player rescued from the browser"><source src="../assets/video/liveops-rescue.mp4" type="video/mp4"></video><figcaption>A stuck player rescued from the browser. My Live Ops page on the left, his game on the right: I teleport him, the car is brought to him and repaired, and he drives off. 54 seconds. <a href="soup-live-ops.html#rescue-video" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Live ops &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/bandit-ambush-poster.jpg" aria-label="On a job by a lake, Zombita warns of bandits from the east"><source src="../assets/video/bandit-ambush.mp4" type="video/mp4"></video><figcaption>On a job by a lake, Zombita warns of bandits from the east. He is shot, and she tells him the job is gone. 35 seconds. Video by Manoy. <a href="soup-world.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">World events &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/bride-boss-poster.jpg" aria-label="The Bride, a boss on a snowy road"><source src="../assets/video/bride-boss.mp4" type="video/mp4"></video><figcaption>The Bride, a boss on a snowy road. Manoy fights her through the dead, bleeds and keeps shooting. 48 seconds. Video by Manoy. <a href="soup-world.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">World events &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/gif-in-chat-poster.jpg" aria-label="A GIF sent from game chat, moving in a game that cannot play GIFs"><source src="../assets/video/gif-in-chat.mp4" type="video/mp4"></video><figcaption>A GIF sent from game chat, moving in a game that cannot play GIFs. It arrives in Discord as a normal GIF. 12 seconds. <a href="soup-phone-chat.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Phone and chat &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/cibo-chat-gifs-poster.jpg" aria-label="A faction chat full of moving GIFs, and the picker with search"><source src="../assets/video/cibo-chat-gifs.mp4" type="video/mp4"></video><figcaption>A faction chat full of moving GIFs, and the picker with search. 14 seconds. Video by CiBo. <a href="soup-phone-chat.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Phone and chat &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/cibo-chat-private-poster.jpg" aria-label="Private chats get their own tab, with the other player&#x27;s name and &quot;is typing&quot;"><source src="../assets/video/cibo-chat-private.mp4" type="video/mp4"></video><figcaption>Private chats get their own tab, with the other player's name and "is typing". 22 seconds. Video by CiBo. <a href="soup-phone-chat.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Phone and chat &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/video/bow-greed-poster.jpg" aria-label="Zombita Bows in a real fight"><source src="../assets/video/bow-greed.mp4" type="video/mp4"></video><figcaption>Zombita Bows in a real fight: an arrow at the Hazmat Boss in its toxic fog. 5 seconds. From Greed's clip. <a href="soup-mods.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">The game mods &rarr;</a></figcaption></figure>
+    </div>
+    <h3>NPC System</h3>
+    <p class="gal-credit" style="margin-top: var(--s-2);">Survivor NPCs for Project Zomboid, filmed in test runs.</p>
+    <div class="vg">
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/npc-system/npc-talk-poster.jpg" aria-label="An NPC talks about her old life, then gives you a job"><source src="../assets/npc-system/npc-talk.mp4" type="video/mp4"></video><figcaption>An NPC talks about her old life, then gives you a job: a notebook to carry to Muldraugh. 63 seconds. <a href="npc-system.html#talk-video" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">NPC System &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/npc-system/npc-quest-poster.jpg" aria-label="The same job, finished"><source src="../assets/npc-system/npc-quest.mp4" type="video/mp4"></video><figcaption>The same job, finished. The notebook is delivered, you earn a new title, and back home she hands you a reward. 66 seconds. <a href="npc-system.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">NPC System &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/npc-system/npc-life.jpg" aria-label="One survivor&#x27;s bad day"><source src="../assets/npc-system/npc-life.mp4" type="video/mp4"></video><figcaption>One survivor's bad day: swarmed in a parking lot, bitten, and left with her own things. 51 seconds. <a href="npc-system.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">NPC System &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/npc-system/npc-clip.jpg" aria-label="Sent somewhere by a test command, an NPC drives off, arrives, parks and gets out"><source src="../assets/npc-system/npc-clip.mp4" type="video/mp4"></video><figcaption>Sent somewhere by a test command, an NPC drives off, arrives, parks and gets out. 20 seconds. <a href="npc-system.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">NPC System &rarr;</a></figcaption></figure>
+    </div>
+    <h3>Untamed Shadows</h3>
+    <p class="gal-credit" style="margin-top: var(--s-2);">My Unreal Engine 5 stealth game, and the grey-box prototypes you can play in the browser.</p>
+    <div class="vg">
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/untamed-shadows/silent-predator-poster.jpg" aria-label="One run of the Trapper mission in UE5, ending in Silent Predator"><source src="../assets/untamed-shadows/silent-predator.mp4" type="video/mp4"></video><figcaption>One run of the Trapper mission in UE5, ending in Silent Predator: nobody alerted, no hits taken. One minute. <a href="untamed-shadows.html#silent-predator" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Untamed Shadows &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/untamed-shadows/prototype-2d-poster.jpg" aria-label="The first prototype"><source src="../assets/untamed-shadows/prototype-2d.mp4" type="video/mp4"></video><figcaption>The first prototype: the Trapper mission as a top-down grey-box, with vision cones and an event log. 70 seconds. <a href="untamed-shadows.html#how-built" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Untamed Shadows &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/untamed-shadows/sharpshooter-2d-poster.jpg" aria-label="Mission 2, the Sharpshooter"><source src="../assets/untamed-shadows/sharpshooter-2d.mp4" type="video/mp4"></video><figcaption>Mission 2, the Sharpshooter: claw through the watchtower's posts until it comes down with him on it. 72 seconds. <a href="untamed-shadows.html#how-built" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Untamed Shadows &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/untamed-shadows/world-map-poster.jpg" aria-label="The world map prototype"><source src="../assets/untamed-shadows/world-map.mp4" type="video/mp4"></video><figcaption>The world map prototype: the whole biosphere, from the jungle floor up to the survey map. 54 seconds at 1.5x speed. <a href="untamed-shadows.html#how-built" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Untamed Shadows &rarr;</a></figcaption></figure>
+    </div>
+    <h3>Motion sensor and VR</h3>
+    <p class="gal-credit" style="margin-top: var(--s-2);">Camera games played by waving, and 360&deg; films for VR headsets.</p>
+    <div class="vg">
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/motion-games/panda-games-poster.jpg" aria-label="Panda Games"><source src="../assets/motion-games/panda-games.mp4" type="video/mp4"></video><figcaption>Panda Games: wave to start, pick a game with your hand, and play all three. 53 seconds. <a href="motion-games.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Motion and VR &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/motion-games/panda-grove-360-poster.jpg" aria-label="Panda Grove, a 360° film shown as a headset view turning once around"><source src="../assets/motion-games/panda-grove-360.mp4" type="video/mp4"></video><figcaption>Panda Grove, a 360° film shown as a headset view turning once around. 30 seconds. <a href="motion-games.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Motion and VR &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/motion-games/panda-forest-360-poster.jpg" aria-label="Panda Forest, the lifelike version, turning once around"><source src="../assets/motion-games/panda-forest-360.mp4" type="video/mp4"></video><figcaption>Panda Forest, the lifelike version, turning once around. 30 seconds. <a href="motion-games.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Motion and VR &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/motion-games/festival-wall-poster.jpg" aria-label="A festival wall game"><source src="../assets/motion-games/festival-wall.mp4" type="video/mp4"></video><figcaption>A festival wall game: light the nine lamps, then float them on the river. 51 seconds at 1.25x speed. <a href="motion-games.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Motion and VR &rarr;</a></figcaption></figure>
+    </div>
+    <h3>Client installations</h3>
+    <p class="gal-credit" style="margin-top: var(--s-2);">Games and kiosks built for clients and run at real events.</p>
+    <div class="vg">
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/pirate-boat/boat-gameplay-2.jpg" aria-label="Pirate boat racer, the 2026 build"><source src="../assets/pirate-boat/boat-gameplay.mp4" type="video/mp4"></video><figcaption>Pirate boat racer, the 2026 build: portrait screen, timer and checkpoint counter. <a href="pirate-boat.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Pirate boat &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/pirate-boat/pirate-boat-installation.jpg" aria-label="The pirate boat in a mall, with dual screens and ship&#x27;s-wheel controllers."><source src="../assets/pirate-boat/pirate-boat-installation.mp4" type="video/mp4"></video><figcaption>The pirate boat in a mall, with dual screens and ship's-wheel controllers. <a href="pirate-boat.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Pirate boat &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/batak/batak-installation.jpg" aria-label="A Batak reaction wall in use."><source src="../assets/batak/batak-installation.mp4" type="video/mp4"></video><figcaption>A Batak reaction wall in use. <a href="batak.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Batak &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/jeep-vr/jeep-vr-1.jpg" aria-label="Jeep VR"><source src="../assets/jeep-vr/jeep-vr.mp4" type="video/mp4"></video><figcaption>Jeep VR: a full drive from paved road, through the airbase and palm forest, onto the beach. <a href="jeep-vr.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Jeep VR &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/photobooths/photobooth-airport-1.jpg" aria-label="An AI photobooth at an airport terminal."><source src="../assets/photobooths/photobooth-airport.mp4" type="video/mp4"></video><figcaption>An AI photobooth at an airport terminal. <a href="photobooths.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Photobooths &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/photobooths/photobooth-pledge-2.jpg" aria-label="A pledge kiosk"><source src="../assets/photobooths/photobooth-pledge.mp4" type="video/mp4"></video><figcaption>A pledge kiosk: form, photo and a themed print. <a href="photobooths.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Photobooths &rarr;</a></figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/daikin/daikin-gameplay.jpg" aria-label="A three-player cricket activation with custom controllers, for a brand event."><source src="../assets/daikin/daikin-installation.mp4" type="video/mp4"></video><figcaption>A three-player cricket activation with custom controllers, for a brand event.</figcaption></figure>
+      <figure class="gal-item vg-item"><video controls muted playsinline preload="none" poster="../assets/ar-treasure-hunt/ar-treasure-hunt-1.jpg" aria-label="An AR treasure hunt with a live leaderboard."><source src="../assets/ar-treasure-hunt/ar-treasure-hunt.mp4" type="video/mp4"></video><figcaption>An AR treasure hunt with a live leaderboard.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section" id="screenshots">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom: var(--s-3);"><span class="accent">Screenshots &middot; State of Undead Purge</span></div>
     <h2>In game</h2>
     <h3>Server hub</h3>
     <div class="gal">
