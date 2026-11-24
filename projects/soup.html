@@ -279,7 +279,7 @@
     </div>
 
     <h3>Engine work</h3>
-    <p>Running all this live means knowing the engine. I traced a vanilla Build 42 crash (a null slot in hen hutch packets on chunk unload) into the 42.21 jar and shipped a guard. I found that command strings over 32 KB crash every client. I wrote an event profiler that wraps every handler across all mods, which found an 83 s freeze and a 148 s blocking call in third-party mods; fixes went to their authors. And I worked out what stops a mod being removed from a live Build 42 save, and built a fix, proven on test servers.</p>
+    <p>Running all this live means knowing the engine. I traced a vanilla Build 42 crash (a null slot in hen hutch packets on chunk unload) into the 42.21 jar and shipped a guard. I found that command strings over 32 KB crash every client. I wrote an event profiler that wraps every handler across all mods, which caught an 83 s freeze and, before it, a 148.8 s stall from the same third-party handler; the logs and cause went to its author. And I worked out what stops a mod being removed from a live Build 42 save, and built a fix, proven on test servers. <a href="engine-work.html" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">Full evidence: logs, stack traces and the shipped fixes</a>.</p>
 
     <h3>Public Workshop mods</h3>
     <p>15+ public mods for Build 42, among them Zombita Raft (rafts and boats with a movement model written from scratch), Zombita RV Living and its KI5 add-on, Zombita Bows (an Archery skill with 146 hand-made animation files), Zombita Bikes (pedal bicycles with our own models and riding animations), and Zombita Guns, Melee Weapons and Vehicle Armor.</p>

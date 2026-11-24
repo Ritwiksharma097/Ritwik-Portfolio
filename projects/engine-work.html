@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engine work · Ritwik Sharma</title>
+  <meta name="description" content="Finding and fixing engine-level problems on a live Project Zomboid Build 42 multiplayer server, with the logs, stack traces and shipped fixes.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Engine work · Ritwik Sharma">
+  <meta property="og:description" content="Finding and fixing engine-level problems on a live Project Zomboid Build 42 multiplayer server, with the logs, stack traces and shipped fixes.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Project Zomboid Build 42 · Engine and multiplayer</span></div>
+    <h1 class="cs-title">Engine work</h1>
+    <p class="cs-lede">Running a live Build 42 multiplayer server means some problems sit below the mods, in the engine itself. These are four I found, traced and fixed, with the logs, stack traces and code behind each one.</p>
+    <p><a href="../assets/engine-work-evidence.pdf" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">The same evidence as a 2-page PDF</a></p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo</div>
+      </div>
+      <div class="item">
+        <div class="label">Where</div>
+        <div class="value">State of Undead Purge, live B42 multiplayer</div>
+      </div>
+      <div class="item">
+        <div class="label">When</div>
+        <div class="value">Oct to Nov 2026</div>
+      </div>
+      <div class="item">
+        <div class="label">Tools</div>
+        <div class="value">Kahlua Lua, reading the 42.21 jar, thread dumps, own profiler</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>A profiler for every event handler, and the 83-second freeze it caught</h2>
+    <p><strong>What I built.</strong> <code>000_ZombitaProfiler.lua</code> loads first and wraps every Lua event handler of every mod on the server, timing each by file and line. Each minute it logs the slowest handlers, and it logs straight away when a long stall ends.</p>
+    <p><strong>What it caught.</strong> On 17 Oct 2026, with 22 players online, the server stopped ticking for 83 seconds. My freeze watchdog took a thread dump during the freeze, and the profiler named the exact handler the moment the game came back. Log excerpts are copied unedited, except for player names.</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>14:34:32 FROZEN online file 37 s old (last write 14:33:54 UTC), 22 online, f=81143 +0 in 30 s
+14:34:32 dump ~/freeze_dumps/20261017-143431.txt (main: RUNNABLE at StringLib.lower(StringLib.java:717))
+14:35:31 freeze over (ticking again) after 83 s
+
+[17-10-26 14:35:17.311] LOG  : Lua  f:81145 st:1,670,542,295&gt; [ZProf] 107s | 102143 ms in handlers | players 22 |
+  1) 100085 ms  OnClientCommand  B42Pantherv2:LootZoneStore.lua:335  x778 | 2) 193 ms  LoadGridsquare ...</pre></div><div class="figure-caption">Sources: freeze watchdog log, server DebugLog 14:33-14:36 UTC, thread dump 20261017-143431.</div></div>
+    <p>Main thread stack from the dump, top down: <code>String.toLowerCase</code> &larr; <code>StringLib.lower</code> &larr; Kahlua <code>pcall</code> &larr; <code>Event.trigger</code> &larr; <code>LuaEventManager.triggerEvent (OnClientCommand)</code> &larr; <code>GameServer.receiveClientCommand</code> &larr; <code>GameServer.main</code>.</p>
+    <p><strong>Cause.</strong> An admin opened the Panther loot-balancer's Loot Zones page. Their client then sent <code>GetLootZones</code> 75 times in 102 seconds. Each request copied, summarised and sorted the whole catalogue of 4,583 zones, calling <code>lower()</code> on both names in every comparison, and that command was exempt from the mod's own rate limit. The same handler had stalled the server for 148.8 s on 14 Oct. I gave the mod's author the logs, the exact line and the cause.</p>
+    <div class="figure"><img src="../assets/soup/perf-now.jpg" alt="The Perf page on the Soup website: ticks a minute, what is loaded, the box's load, and a table of the top Lua handlers by file and line, with milliseconds and calls."><div class="figure-caption">The profiler today, on the server's Perf page: the Lua handlers that cost the most time in the last minute, by file and line.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>A vanilla Build 42 crash traced into the jar: chicken coops on chunk unload</h2>
+    <p><strong>The crash.</strong> Players crashed to desktop while walking near a chicken coop:</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>NullPointerException ... IsoAnimal.removeFromUpdateLists() because "animal" is null
+    at IsoHutch.removeFromWorld(IsoHutch.java:1095)</pre></div>
+    <p><strong>What the jar showed</strong> (42.21, read class by class). <code>NetworkPlayerAI.parse(AnimalPacket)</code> does <code>animalInside.put(oldPos, null)</code> and only refills the slot when the packet names a new one. So a hen leaving the coop leaves a <code>null</code> on the client. When the chunk unloads, <code>IsoHutch.removeFromWorld</code> walks that map and crashes.</p>
+    <p>A first fix that ran on <code>OnTick</code> never fired before a crash. The frame order explains why: <code>GameClient.update</code> (packets) runs, then <code>OnTickEvenPaused</code>, then <code>ProcessChunkPos</code> (the unload, where it crashes), and only then <code>OnTick</code>. So the check now runs on <code>OnTickEvenPaused</code>, the only hook between the packet and the unload:</p>
+<div class="arch"><pre>--- Rebuild one coop's animal list without empty slots. Returns how many empty slots were dropped (0 = untouched).
+function HF.clean(hutch)
+    local map = hutch:getAnimalInside()
+    if not map or map:size() == 0 then return 0 end
+    local list = ArrayList.new()
+    list:addAll(map:values())
+    local keep, empty = {}, 0
+    for i = 0, list:size() - 1 do
+        local a = list:get(i)
+        if a == nil then empty = empty + 1 else keep[#keep + 1] = a end
+    end
+    if empty == 0 then return 0 end
+    map:clear()
+    for _, a in ipairs(keep) do pcall(function() hutch:addAnimalInside(a, false) end) end
+    return empty
+end
+...
+if Events and Events.OnTickEvenPaused then Events.OnTickEvenPaused.Add(HF.onFrame) end</pre></div><div class="figure-caption">From <code>client/ZX_HutchFix.lua</code> (372 lines, shipped in the live mod). Lua can't use the map's keys (Integer keys reach Lua as Double), so it rebuilds from <code>values()</code>.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>One string over 32 KB crashes every client</h2>
+    <p><strong>Symptom.</strong> On 11 Oct 2026 the in-game leaderboard stuck on "Waiting for server..." for everyone, and every client logged <code>NegativeArraySizeException</code>.</p>
+    <p><strong>Cause.</strong> Server-to-client commands write each text value with a 2-byte length, and the rankings JSON had just passed 37 KB as the player count grew. The fix sends big texts in pieces:</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>-- 1.7.173: the game sends each text value of a server command with a 2-byte length, so one string over ~32 KB
+-- arrives broken ("NegativeArraySizeException" on every client, the board stuck on "Waiting for server..."). The
+-- board passed 37 KB on 2026-10-11 as players grew. Big texts now go in pieces of PART_CHARS characters (p1..pn + n);
+-- a small one still goes as data. Kahlua strings are Java strings, so sub() never splits a character, and 10,000
+-- characters stay under the limit even if every one needs 3 bytes.
+local PART_CHARS = 10000
+local function lbArgs(text)
+    text = tostring(text or "")
+    if #text &lt;= PART_CHARS then return { data = text } end
+    local args, n, i = {}, 0, 1
+    while i &lt;= #text do
+        n = n + 1
+        args["p" .. n] = text:sub(i, i + PART_CHARS - 1)
+        i = i + PART_CHARS
+    end
+    args.n = n
+    return args
+end</pre></div><div class="figure-caption">From <code>server/ZombitaLeaderboardServer.lua</code>. The client joins the parts back together.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Removing a mod from a live Build 42 save</h2>
+    <p>Normally you can't take a mod off a running B42 server without breaking it. I found out why by reading the jar, then proved it on scratch dedicated servers on this PC (31 Oct 2026):</p>
+    <ul>
+      <li><strong>Fatal for every client:</strong> <code>ScriptsDictionary</code> (SpriteConfigs, SpriteOverlayConfigs, ContextMenuConfigs) and <code>StringDictionary</code>. <code>parseLoadList</code> only clears <code>isLoaded</code> for scripts loaded in the current boot, so a saved entry with no script behind it stays loaded for ever. The server boots fine, then every client throws "Missing dictionary script on client".</li>
+      <li><strong>Fix:</strong> a stub entity with the same <code>module.name</code>, on both sides. One line parses: <code>entity X { component SpriteConfig { face N { layer { row = false, } } } }</code>. A stub pointing at a tile that doesn't exist kills the server instead ("World loading could not proceed").</li>
+      <li><strong>Fatal for one character:</strong> a trait from the removed mod causes an NPE in <code>CharacterTraits.load</code>. The fix is to register the same trait from <code>media/registries.lua</code>.</li>
+      <li><strong>Not fatal:</strong> removed items and entities, dropped fluids, and tiles that turn into invisible objects.</li>
+    </ul>
+    <p>This is how we removed a vaccine mod from the live server without a wipe.</p>
+    <p>The scratch-server logs from that test weren't kept. I can re-run it and show it live.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this demonstrates</h2>
+    <ul>
+      <li><strong>Reading the engine, not guessing.</strong> Two of these were settled by reading the 42.21 jar class by class: the coop crash and why a removed mod breaks a save.</li>
+      <li><strong>Tools that catch problems on a live server.</strong> A profiler over every mod's handlers and a freeze watchdog with thread dumps turned an 83-second freeze into one file and line.</li>
+      <li><strong>Fixes that ship.</strong> The coop guard and the split leaderboard strings run in the live mod, and the freeze went to the mod's author with logs, line and cause.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">Live System</div>
+        <div class="title">Soup</div>
+        <div class="desc">The platform and server these fixes run on.</div>
+      </a>
+      <a href="zombita.html">
+        <div class="tag">Live AI</div>
+        <div class="title">Zombita</div>
+        <div class="desc">The AI that administers the same live game world.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
