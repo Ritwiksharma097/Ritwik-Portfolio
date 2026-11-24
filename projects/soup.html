@@ -83,6 +83,8 @@
     <p>Players rate it 5.0 from 37 ratings. One review, from a player who has hopped between Project Zomboid public servers for years, calls the website-to-game integration "one of the most impressive and creative implementations I've seen in the PZ community".</p>
     <div class="figure"><img src="../assets/soup/reviews.jpg" alt="The server's reviews page: 5.0 stars from 37 players and the latest reviews, including Out of the box."><div class="figure-caption">The reviews page on the server's website. Players rate and review from a Discord button, and each review shows in Discord and on the site.</div></div>
 
+    <p>Many of the in-game and website screenshots on this page were taken by CiBo, one of the server's players, and are marked "Screenshot by CiBo".</p>
+
     <div class="figure">
       <img src="../assets/soup/soup-zombita-page.png" alt="Zombita character page on the Soup website with smirk reaction">
       <div class="figure-caption">The Zombita interaction page on the Soup website. The same agent appears in Discord and in-game.</div>
@@ -137,18 +139,13 @@
     <h2>The shop network</h2>
     <p>The clearest demonstration of cross-runtime sync is the shop system. Named shopkeepers run shops with rotating stock and their own wallets. Stock can be edited from the admin panel, viewed publicly on the website, and bought from in-game.</p>
 
-    <div class="figure">
-      <img src="../assets/soup/soup-marketplace.png" alt="Marketplace and Shop Management admin view showing five named NPCs">
-      <div class="figure-caption">Marketplace &amp; Shop Management (an earlier build). Rotating shops, dynamic pricing, force-rotate controls, ban management. The same data feeds the public shop page and the in-game dialogs.</div>
+    <div class="figure"><img src="../assets/soup/cibo-shop-network.jpg" alt="The Shop Network page on the website: the treasury bar and every shopkeeper with their trade."><div class="figure-caption">The shop network on the website: the treasury, and every shopkeeper with what they sell. Screenshot by CiBo.</div></div>
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/cibo-viktor.jpg" alt="Viktor's Armory page: a shopkeeper's rotating stock of guns, magazines and ammo with prices and how many are left."><div class="figure-caption">One keeper's shelves: Viktor's Armory, with prices, stock left and rarity. Screenshot by CiBo.</div></div>
+      <div class="figure"><img src="../assets/soup/cibo-voss.jpg" alt="Dr. Voss's Clinic page: medic medicines and medical supplies with prices and stock."><div class="figure-caption">Dr. Voss's Clinic, with the medic card's medicines and the always-stocked basics. Screenshot by CiBo.</div></div>
     </div>
 
-    <div class="figure">
-      <img src="../assets/soup/soup-shop-network-public.png" alt="Public shop network page showing all eight shopkeepers">
-      <div class="figure-caption">Public-facing shop network. Same backend, different surface. Players check restock timers from the web before logging into the game.</div>
-    </div>
-
-    <div class="callout">
-      <p><strong>Why this matters:</strong> each of these screenshots shows a web page or an admin panel, and players buy from the same shops in game. It is <em>the same thing</em>, rendered three ways. That is the entire point of Soup as a platform.</p>
+    <p><strong>Why this matters:</strong> each of these screenshots shows a web page or an admin panel, and players buy from the same shops in game. It is <em>the same thing</em>, rendered three ways. That is the entire point of Soup as a platform.</p>
     </div>
   </div>
 </section>
@@ -270,6 +267,12 @@
       <div class="figure-caption">A faction's channel from its first day. Zombita welcomes them, links their page, opens their voice room and posts each recruit. Player names and the page link are blurred.</div>
     </div>
 
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/cibo-faction-overview.jpg" alt="A faction's window in game: its banner, owner, members, kills, what its space unlocked and its wallet."><div class="figure-caption">Running a faction in game: banner, members, kills, what its space unlocked and the faction wallet. Screenshot by CiBo.</div></div>
+      <div class="figure"><img src="../assets/soup/cibo-faction-members.jpg" alt="The faction's members tab in game with ranks, kills, promote, demote and kick, and what each rank may do."><div class="figure-caption">Members and ranks, with what each rank is allowed to do. Screenshot by CiBo.</div></div>
+    </div>
+    <div class="figure"><img src="../assets/soup/cibo-faction-web.jpg" alt="The faction page on the website: recruitment, invites, a grid of permissions per rank, members and the faction wallet."><div class="figure-caption">The same faction on the website: recruitment, invites, a permissions grid for every rank, and the wallet. Screenshot by CiBo.</div></div>
+
     <h3>Performance from the outside</h3>
     <p>The Perf page reads the server from files outside the game, so it keeps working when the game is struggling. It shows ticks a minute against the 500 the game needs to keep up, what is loaded (zombies, cars, animals, and zombies near players), the box's load, memory and CPU heat, and the Lua handlers that cost the most time in the last minute, from my own profiler that wraps every mod's event handlers. Its Changes tab shows what changed in the mod list or server settings, before and after, so a slow evening can be traced back to its cause.</p>
 
@@ -294,6 +297,7 @@
     </ul>
 
     <div class="figure" style="max-width: 520px; margin-left: auto; margin-right: auto;"><img src="../assets/soup/jobs-board.jpg" alt="Zombita's board in the Discord jobs channel: several postings of jobs by tier with pay and time left, first to finish wins."><div class="figure-caption">Zombita's board in Discord. New jobs by tier, D to A, with pay and time left. The first player to bring her the code gets paid.</div></div>
+    <div class="figure" style="max-width: 560px; margin-left: auto; margin-right: auto;"><img src="../assets/soup/cibo-jobs-web.jpg" alt="Zombita's Jobs page on the website: big jobs with who is racing, and regular jobs to take."><div class="figure-caption">The same board on the website, with who is racing for each big job. Screenshot by CiBo.</div></div>
 
     <div class="figure"><img src="../assets/soup/quest-taken.jpg" alt="The in-game map with quest markers and Zombita's messages: the quest is taken, another player is already on it, and her sealed crate must not touch the ground."><div class="figure-caption">Taking a big job. Another player is already on it, and Zombita's sealed crate has to reach Daisy County without touching the ground.</div></div>
     <div class="figure-grid" style="max-width: 640px; margin-left: auto; margin-right: auto;">
@@ -320,6 +324,10 @@
     <div class="figure-grid">
       <div class="figure"><img src="../assets/soup/wanted-poster.jpg" alt="Zombita warns players that Queen Dusk has her eye on them, then a WANTED poster by Queen Dusk with a price on a player's head that rises 500 bronze an hour."><div class="figure-caption">Queen Dusk marks a player. Zombita warns them beforehand and announces the mark, the WANTED poster goes up with a price that rises every hour, and her hordes hunt them in game. Later that morning the staff log shows the raid: 100 zombies on the marked player.</div></div>
       <div class="figure"><img src="../assets/soup/live-status.jpg" alt="Discord live status card: game time, weather, Dawn of the Dead countdown, next restart, server goal, 20 of 24 online and who is on the road."><div class="figure-caption">The live status card in Discord: game time and weather, the Dawn of the Dead countdown, the server goal and who is online, with buttons for your stats and a reminder.</div></div>
+    </div>
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/cibo-wanted-item.jpg" alt="A WANTED poster by Queen Dusk read as an item in game, with a player's portrait and the price on their head, next to a stack of other posters in the inventory."><div class="figure-caption">The posters exist in game too, as items you can find and read. Screenshot by CiBo.</div></div>
+      <div class="figure"><img src="../assets/soup/cibo-hall-of-infamy.jpg" alt="The Hall of Infamy on the website: the biggest prices this season, each with a title and a line from Queen Dusk."><div class="figure-caption">The Hall of Infamy: the biggest prices this season, each with a title and a line from Queen Dusk. Screenshot by CiBo.</div></div>
     </div>
 
     <div class="figure-grid">
