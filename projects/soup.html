@@ -206,6 +206,14 @@
       <div class="figure-caption">The player panel. Teleport, give items, send a Zombita pop-up, spawn or flip a car, warn, call thunder on them, plant items in zombies, kick or ban, and open the full character sheet with needs, traits and skills, all while they play.</div>
     </div>
 
+    <h3>The public 3D map</h3>
+    <p>Players get their own version of the map on the website. It zooms from the whole server down to the furniture inside each house, shows who is online and where, the shops, bus stations and the diner, and the current world event. It follows the game's clock and weather: dawn, evening and night looks, sunrise and sunset moving with the month, and rain, snow, fog and lightning when the game has them. Player bases are redrawn on the map as they build.</p>
+    <div class="figure"><img src="../assets/soup/map3d-houses.jpg" alt="The public 3D map zoomed in on a street: houses with their rooms, furniture and gardens."><div class="figure-caption">Zoomed all the way in: houses with their rooms and furniture, in the game's own art.</div></div>
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/map3d-world.jpg" alt="The public 3D map of the whole server with town names, 21 online players and a Zombie rain event."><div class="figure-caption">The whole server: towns, 21 players online, and a Zombie rain event over Muldraugh.</div></div>
+      <div class="figure"><img src="../assets/soup/map3d-town.jpg" alt="The public 3D map over the town of Westpoint by the river, with shop and bus station icons."><div class="figure-caption">One town, with its shops and bus station.</div></div>
+    </div>
+
     <h3>The admin workspace</h3>
     <p>My admins plan and run the server in a workspace I built into the site, which works like Google Docs and Sheets. It has four kinds of document: rich-text docs, spreadsheets, kanban boards, and the server's own config files. Everything syncs live through my own WebSocket relay on Yjs, so when two admins edit the same page they see each other's cursors and changes as they type. Every document keeps a change log and versions that can be rolled back.</p>
     <p>The config editor is the careful one. The live copy of <code>servertest.ini</code> or <code>SandboxVars.lua</code> is only a draft. Nothing touches the real file until an admin saves, the backend checks the syntax, and only then writes it, so a broken merge can never reach the running server.</p>
