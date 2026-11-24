@@ -107,6 +107,13 @@
       </video>
       <div class="figure-caption">Mission 2 in the same grey-box: the Sharpshooter, a long gun on a watchtower over open plains. He can only be pounced on from a fig tree, or you claw through the tower's rotten posts until it comes down with him on it. First run: the tower comes down, then the tigress lingers in the open and the handler shoots her. The monkey: "Open ground, long gun. We knew. Try again. Please." Second run, at double speed: the same trick, then across the river to the far bank. Predator (body found), method: tower collapse. 72 seconds, no sound.</div>
     </div>
+    <p>The whole world is planned the same way, as a map you can walk before it is built.</p>
+    <div class="figure">
+      <video controls muted loop playsinline preload="none" poster="../assets/untamed-shadows/world-map-poster.jpg" aria-label="The Untamed Shadows world map prototype in the browser: zooming from the jungle floor around the tiger den out to mountains, a lion valley, a village, herds, a crater and a lake, and to the full survey map with regions such as Snowy Den, Puma Lakes, Lion Valley, Delta Swamp and Frontier.">
+        <source src="../assets/untamed-shadows/world-map.mp4" type="video/mp4">
+      </video>
+      <div class="figure-caption">The world map prototype: the whole biosphere, about 9 by 6.75 km, built from the approved sketch. You can roam it as the tigress from the jungle floor, zoom up to the satellite view, and out to the scientists' survey map. A world engine running in WebAssembly drives 25 regions, 139 places, 18 herds and 33 camps; the herds keep their own schedules, like deer at the salt bank at dawn, and the Trapper's watches walk their rounds. 54 seconds at 1.5x speed, no sound.</div>
+    </div>
     <p>The stealth rules live in an engine-agnostic C++20 library with its own test suite of 90 test cases: perception, suspicion, light, scent, wind, poison, bodies and the monkey's rules. Unreal loads it as a plugin, so the rules can be tested and changed without the editor.</p>
     <p>On top of it the Unreal game layer is C++ with thin Blueprints, and all tuning numbers sit in Data Assets. It covers the tigress and her input, the HUD and minimap with wind, day and night with night vision, weather from clear to heavy rain that changes sight, scent and noise, and wildlife: deer, crows, peafowl and vultures, with alarm calls.</p>
     <div class="figure"><img src="../assets/untamed-shadows/night-vision.jpg" alt="Night vision at 2 a.m."><div class="figure-caption">Night vision at 2 a.m.</div></div>
