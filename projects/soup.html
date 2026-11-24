@@ -364,6 +364,15 @@
 
     <h3>Zombita NPC System</h3>
     <p>My newest work, in testing with my server's admins since November 2026. Survivor NPCs with personalities, needs and routines, who learn skills from what they do, pass gossip about you from house to house, keep homes and diaries, and drive with the same motion code on the server and every client. An optional LLM brain can only send intents that the Lua side checks and may refuse. A public Workshop release is planned.</p>
+
+    <h3>Zombita Pulse: NPCs that learn from real players</h3>
+    <p>Pulse is a separate server mod, with a small part on each player's PC, that records how real players move, search, fight and drive, so the NPCs can learn to act like players. Nobody is recorded by name: each player gets a code made from a secret that lives only in the server's memory and changes every 24 hours and at every restart. No Steam IDs, character names, chat or IPs are kept, and players agree to it in the server's terms.</p>
+    <p>It logs walking four times a second, every door, window and fence crossed, timed actions, items taken and stored, fights (with footwork ten times a second while a zombie is close), reactions when a zombie comes into view, and driving. It runs inside a cost budget and can be switched between full, light and paused from the website.</p>
+    <p>A Python analyzer turns the data into training tables, routes and crossings for the NPC walker, a driving map, and models for the Python NPC Brain. The first model is already in the NPC mod: a 160-tree boosted forest, compiled into Kahlua Lua, that picks an NPC's next footwork move against zombies. On 51,856 held-out fight moments it picks the move the real player made 72.6% of the time (balanced accuracy 0.57, where chance is 0.125).</p>
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/pulse-status.jpg" alt="The Zombita Pulse page: running full with 17 players online, its cost per second against a budget, data written today, no errors, and the switch between pause, light, full, automatic and by players."><div class="figure-caption">The Pulse page: running full with 17 players, its cost against the budget, today's data, and the switch.</div></div>
+      <div class="figure"><img src="../assets/soup/pulse-lines.jpg" alt="Pulse's lines today by kind, such as path, act, loot, foot, open, drive, swing and hit, and details on the current file, client part and drops."><div class="figure-caption">What it recorded today by kind (paths, actions, loot, footwork, doors, driving, swings) and how the client part is doing.</div></div>
+    </div>
   </div>
 </section>
 
