@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zombita NPC System · Ritwik Sharma</title>
+  <meta name="description" content="Survivor NPCs for Project Zomboid Build 42 with homes, routines, moods, memory and reputation, built to be safe on a busy multiplayer server and trained in part on anonymised data from real players.">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zombita NPC System · Ritwik Sharma">
+  <meta property="og:description" content="Survivor NPCs for Project Zomboid Build 42 with homes, routines, moods, memory and reputation, built to be safe on a busy multiplayer server and trained in part on anonymised data from real players.">
+  <meta property="og:url" content="https://work.ritwiksharma.com/">
+  <meta property="og:image" content="https://work.ritwiksharma.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
+  <style>
+    /* Screenshot slots: replace each .shot-slot with an <img> or <video> when the capture is ready. */
+    .shot-slot {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--s-4);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-faint);
+      background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 12px, var(--bg-elev-2) 12px, var(--bg-elev-2) 24px);
+    }
+  </style>
+</head>
+<body>
+<div class="xsite">
+  <div class="xsite-inner">
+    <a class="xsite-home" href="https://ritwiksharma.com"><span class="arrow">&larr;</span> <span class="label">ritwiksharma.com</span></a>
+    <nav class="xsite-links">
+      <a href="https://ritwiksharma.com">Portal</a>
+      <span class="xsite-sep">&middot;</span>
+      <a class="current" href="https://work.ritwiksharma.com">Work</a>
+      <span class="xsite-sep">&middot;</span>
+      <a href="https://phd.ritwiksharma.com">Research</a>
+    </nav>
+  </div>
+</div>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Ritwik Sharma</a>
+    <div class="nav-links">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="mailto:ritwiksharma097@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cs-hero">
+  <div class="wrap-narrow">
+    <a class="cs-back" href="../index.html">Work</a>
+    <div class="eyebrow"><span class="accent">Project Zomboid Build 42 · NPCs and AI</span></div>
+    <h1 class="cs-title">Zombita NPC System</h1>
+    <p class="cs-lede">Survivors for Project Zomboid who live their own lives. They move into empty houses, cook, sleep, loot and hide from the dead. They remember what you did, tell each other about it, and can become your friends, companions or partners. The mod is built to run on a busy multiplayer server, and part of how they move and fight is learned from real players.</p>
+
+    <div class="cs-meta">
+      <div class="item">
+        <div class="label">Role</div>
+        <div class="value">Solo</div>
+      </div>
+      <div class="item">
+        <div class="label">Status</div>
+        <div class="value">In testing with my server's admins since Nov 2026. Public Workshop release planned.</div>
+      </div>
+      <div class="item">
+        <div class="label">Engine</div>
+        <div class="value">Project Zomboid Build 42 (Kahlua Lua) + Python</div>
+      </div>
+      <div class="item">
+        <div class="label">Size</div>
+        <div class="value">387 Lua files, 106 offline Lua test suites</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What they are</h2>
+    <p>Each NPC is a person with their own body, needs, mood, memories and plans. They are not zombies in disguise. People walk in from outside the map over the first days, find an empty house and settle. They never claim a player base or safehouse.</p>
+    <ul>
+      <li><strong>Homes and routines.</strong> They cook with real food, wash up, garden, fetch water, split wood, sleep in a bed and switch the lights on at dusk. Neighbours take on jobs like medic, gardener, lookout, cook or trader, and some streets grow into small towns with a leader, a noticeboard and a shared store.</li>
+      <li><strong>Needs and moods.</strong> Hunger, thirst, energy, safety, social, comfort, fun and hygiene drain at their own speed. Mood comes from those needs and from what happened lately, and it changes how they talk, how brave they are and what they choose. Misery that lasts can end in a breakdown, and players can help.</li>
+      <li><strong>Memory and reputation.</strong> Only NPCs who saw or heard something know about it. Sight, light, walls and noise all count. They pass it on as gossip when they meet, and each retelling is less sure. Each NPC keeps its own opinion of you. Once it knows you killed someone, its trust in you never goes above 90 out of 100.</li>
+      <li><strong>Companions.</strong> Up to five travel with you. They follow, sneak when you sneak, fight, carry and search. You give them standing orders, use an order wheel, and swap real items on a gear sheet.</li>
+      <li><strong>Dating.</strong> PG-13 romance: flirting, dates, partners, moving in, jealousy and breakups. Each player can turn it off for themselves.</li>
+      <li><strong>Driving.</strong> They drive on real roads, arrive by car with the key on the driver, refuel, change a tyre and get out of a car's way.</li>
+      <li><strong>Fights.</strong> Against zombies they swing, shove, stomp, step back and break off. They can be bitten, get sick and turn. The zombies are exactly as hard as the server sets them. Nothing in the mod makes them easier.</li>
+    </ul>
+
+    <!-- SHOT: survivor daily life (cooking, garden, lights at dusk) -->
+    <div class="figure"><img src="../assets/npc-system/looks-sheet.jpg" alt="Eight of the NPCs' baked looks shown front and back in a T-pose: tee and jeans, cap and tee, hoodie and cargo pants, flannel and overalls, leather jacket, jumper and chinos, a woman's tee and cap, and a woman's hoodie."><div class="figure-caption">Placeholder until the in-game shot: 8 of the 49 baked looks, from an offline preview render in a T-pose. Not a game screenshot.</div></div>
+
+    <!-- SHOT: talk window (an NPC answering, the player's typed line, mood shown) -->
+    <div class="figure"><div class="shot-slot">Screenshot coming: the talk window, with an NPC answering and its mood shown</div><div class="figure-caption">The talk window. NPCs listen, answer and remember, and you can type your own lines.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>How they are built</h2>
+    <p><strong>The record and the body.</strong> An NPC lives as a data record on the server with its own id. A body only exists near players: it appears when a player is 60 tiles away and goes at 90, so it does not flicker at the edge. Far from players the record keeps living in a cheap off-screen simulation, so needs, home, loot and travel move on. The body can be removed and rebuilt at any time without losing anything. The body is a Build 42 animal set up as a human, not a dressed-up zombie.</p>
+    <p><strong>Reflexes stay in Lua.</strong> Senses, fear, fleeing and fighting always run in the mod. Both brains, the Lua planner and the optional Python one, speak only in intents, a fixed list of 44 actions such as GO_TO, HIDE, LOOT, TALK and DRIVE_TO. Python never moves a body. Lua checks every intent before it runs and refuses one that is out of date, impossible or planned on old information. Reflexes always win over a plan.</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>-- Zombita NPC System: the intent list. Both brains (Lua planner, optional Python) speak only this.
+-- Python never moves a body: it sends intents, Lua checks them here and runs them.
+...
+-- may `new` replace `current`? Reflexes (high prio) always win; equal prio only if current is finished/expired.</pre></div><div class="figure-caption">From <code>shared/ZNS/ZNS_Intents.lua</code>.</div></div>
+    <p><strong>Safe on a multiplayer server.</strong> The server decides everything. Clients show bodies and send requests. Before the multiplayer test I fired all 161 client-to-server commands from three seats: a player 300 tiles away, a plain player next to the NPC, and staff. A far player changes no NPC with any of them. Every command has a rate cap (a bucket of 30 per player, refilled 12 a second) and a payload cap (no text over 4,000 bytes). The audit found and fixed two holes: a test command any player could use, and a reply that leaked an NPC's health to a far player.</p>
+    <p><strong>A load governor.</strong> The mod watches the real gap between server ticks, so it sees load from the engine and every other mod, not only its own. When the server is busy it slows only what nobody is watching: gossip, holidays, news, letters and off-screen life. Fights, senses, zombies and anything at a player's side never wait. Staff can also flip any system off live, or pause new NPCs, without a restart.</p>
+    <p><strong>"What is it doing and why".</strong> The admin panel lists every NPC, on screen or off, with what it is doing and why, its needs and its last decisions. Testers can take a snapshot with <code>/npcreport</code>: for each NPC nearby it writes the current intent and where it came from (Lua or Python), mood, needs, health and its last 10 decisions.</p>
+
+    <!-- SHOT: admin why-view (admin panel: NPC list, "doing and why", last decisions) -->
+    <div class="figure"><div class="shot-slot">Screenshot coming: the admin panel's "what is it doing and why" view</div><div class="figure-caption">The admin panel: an NPC's current intent, the reason for it, its needs and its last decisions.</div></div>
+
+    <!-- SHOT: reputation / feelings panel (People panel: opinion, named feelings like grateful or hurt) -->
+    <div class="figure"><div class="shot-slot">Screenshot coming: the People panel with an NPC's opinion of you and its feelings</div><div class="figure-caption">What one NPC thinks of you: trust, named feelings like grateful or hurt, and what it has heard.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Fights and companions</h2>
+    <p>Footwork against zombies leans on a model trained on real players (next section). The fight's own safety rules still win over it. Hurt bodies look hurt, with limps, blood, bandages and splints.</p>
+
+    <!-- SHOT: fight with zombies (an NPC swinging, backing off, shoving) -->
+    <div class="figure"><img src="../assets/npc-system/wounds-sheet.jpg" alt="Two NPC looks shown front and back in a T-pose with blood and bandages: a man in a white tee and jeans, and a woman in a green flannel shirt, each with clean and bloody bandage versions."><div class="figure-caption">Placeholder until the in-game fight shot: wound and bandage looks from an offline preview render in a T-pose. Not a game screenshot.</div></div>
+
+    <!-- SHOT: companions + order wheel (two or three companions following, the wheel open) -->
+    <div class="figure"><div class="shot-slot">Screenshot coming: companions following the player, with the order wheel open</div><div class="figure-caption">Companions and the order wheel, with standing orders for gun use, staying quiet, picking things up and a light at night.</div></div>
+
+    <!-- SHOT: short clip (video), 10 to 20 s of NPCs in the world; replace the slot with
+         <video src="../assets/npc-system/npc-clip.mp4" poster="../assets/npc-system/npc-clip.jpg" controls muted loop playsinline preload="metadata"></video> -->
+    <div class="figure"><div class="shot-slot">Clip coming: a short video of NPCs in the world</div><div class="figure-caption">A short clip, no sound.</div></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Learning from real players: Zombita Pulse</h2>
+    <p>Pulse is a separate server mod, with a small part on each player's PC, that records how real players move, search, fight and drive on my server, so the NPCs can learn to act like players.</p>
+    <p><strong>What it records.</strong> Walking four times a second, every door, window and fence crossed, timed actions like eating, cooking and building, items taken and stored, each hit and a summary of each fight, and driving. While a zombie is within 6 tiles it also records footwork ten times a second: position, facing, and where the nearest zombies are. No keys, mouse or screen are recorded.</p>
+    <p><strong>Nobody is recorded by name.</strong> Each player gets a code made from a secret that lives only in the server's memory. The secret changes every 24 hours and at every restart, so a code only links one person's data for that stretch. No Steam IDs, character names, chat or IPs are kept, and players agree to it in the server's terms. Pulse runs inside a cost budget and can be switched between full, light and paused from the website.</p>
+    <p><strong>The analyzer.</strong> A Python package turns the logs into training tables, proven routes and crossings for the NPC walker, a driving map, fight styles, and models for the Python brain. A newly trained model only replaces the old one when it does better on the same held-out players.</p>
+    <p><strong>The fight forest.</strong> The first model in the mod picks an NPC's next footwork move against zombies from 8 choices: back, forward, left, right, shove, stay, swing or turn. It is a boosted forest of 160 trees, compiled from Python into plain Kahlua Lua tables. The tests check, row by row, that the Lua picks exactly what the Python model picks. Tested on 51,856 fight moments from players it never saw, it picks the move the real player made 72.6% of the time, with its mix of moves within 3.6% of the players' mix. Set to weigh every move equally, its balanced accuracy is 0.57, where chance is 0.125.</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>-- ZNS_FightTree.decide(f): a boosted forest made by pulse_analysis.forest_lua (160 trees, 8 classes).
+-- Held-out (51856 test rows): with PRIOR_W 0.50 the right move 0.726, move mix within 0.036 of the players';
+-- PRIOR_W 0: balanced accuracy 0.570 (chance 0.125).
+-- returns one of: back, forward, left, right, shove, stay, swing, turn
+-- GENERATED: do not edit, retrain. Kahlua-safe: tables, loops and if only, no main-body locals.</pre></div><div class="figure-caption">Header of <code>server/ZNS/ZNS_FightTree.lua</code> (line breaks added). The file ships with PRIOR_W 0.5.</div></div>
+
+    <!-- SHOT: Pulse page (reused from the Soup page; swap for fresher captures if Nin has them) -->
+    <div class="figure-grid">
+      <div class="figure"><img src="../assets/soup/pulse-status.jpg" alt="The Zombita Pulse page: running full with 17 players online, its cost per second against a budget, data written today, no errors, and the switch between pause, light, full, automatic and by players."><div class="figure-caption">The Pulse page: running full with 17 players, its cost against the budget, today's data, and the switch.</div></div>
+      <div class="figure"><img src="../assets/soup/pulse-lines.jpg" alt="Pulse's lines today by kind, such as path, act, loot, foot, open, drive, swing and hit, and details on the current file, client part and drops."><div class="figure-caption">What it recorded today by kind (paths, actions, loot, footwork, doors, driving, swings) and how the client part is doing.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>The Python brain</h2>
+    <p>An optional program that runs next to the game and thinks for the NPCs over a file bridge. It keeps long memory in SQLite, tracks relationships, makes life choices like moving out or pairing up, and plans for people off-screen. It uses the models the Pulse analyzer exports. With an API key it can also run free talk, where a guard checks what the player types going in and what the model says coming out, and swaps a bad line for a written one.</p>
+    <p>It is never required. If it goes quiet for 5 seconds, every NPC falls back to the Lua brain and nothing breaks. It is not part of the Workshop item, and it needs only Python's standard library, plus one optional package for free talk. For testers without Python there is a one-click build of it.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>Testing</h2>
+    <p>Most of this was built and checked offline before anyone played it. The mod has 106 Lua test suites that load the real mod files under Python, against strict fakes of the game's Java: calling a method the fake doesn't know is an error, as it is in Kahlua. The Python brain and analyzer have 27 more test files. Every install runs all the Lua suites, plus checks for Kahlua's limits, and stops if one fails.</p>
+    <p><strong>The stress test.</strong> One suite loads the whole mod as a dedicated server with 30 players in 6 groups, 40 NPC records, 12 bodies and 3,000 zombies, and counts every call into Java per server tick. Kahlua takes roughly a microsecond per Java call, so this is close to the real cost. The first audit cut the NPC systems from 96,346 Java calls a tick to 3,679, 26 times fewer, mostly by scanning the zombie list once instead of once per NPC per system. After the multiplayer hardening, with every newer system on, a busy run averages 2,375 calls a tick and its worst tick is 8,331, inside the limits of 3,000 and 10,000.</p>
+    <p><strong>What is still to come.</strong> The stress test is offline, not a real server. A two-player multiplayer test is next. Until it passes, hostile groups, raids and NPC car fights stay switched off by default.</p>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>What this demonstrates</h2>
+    <ul>
+      <li><strong>AI that people live next to.</strong> Needs, moods, memory and a reputation that only spreads through people who saw it, so what you do follows you in a way you can explain.</li>
+      <li><strong>Learning from real players, with care.</strong> Anonymous data collection with rotating codes, and a model compiled into the game's own Lua and checked against the Python original.</li>
+      <li><strong>Built for a live multiplayer server.</strong> A server-side record, checked intents, every client command audited, and a load governor that never makes zombies easier.</li>
+      <li><strong>Tools for the people running it.</strong> "What is it doing and why", live switches and tester snapshots, so a bug report comes with the reason behind it.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+    <div class="wrap-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--s-4);">Related work</div>
+      <div class="related">
+      <a href="soup.html">
+        <div class="tag">Live System</div>
+        <div class="title">Soup</div>
+        <div class="desc">The live server and platform where Pulse records players.</div>
+      </a>
+      <a href="zombita.html">
+        <div class="tag">Live AI</div>
+        <div class="title">Zombita</div>
+        <div class="desc">The AI that administers the same live game world.</div>
+      </a>
+      <a href="engine-work.html">
+        <div class="tag">Engine</div>
+        <div class="title">Engine work</div>
+        <div class="desc">Engine-level problems found and fixed on the same server.</div>
+      </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <div class="foot-brand">Ritwik Sharma</div>
+      <p class="foot-tagline">Builds games, agents, and live systems. Based in India, open to relocation.</p>
+    </div>
+    <div>
+      <h4>Reach</h4>
+      <ul>
+        <li><a href="mailto:ritwiksharma097@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ritwik-sharma-bb1370152/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/Ritwiksharma097" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <ul>
+        <li><a href="https://stateofundeadpurge.site" target="_blank" rel="noopener">Soup (live)</a></li>
+        <li><a href="https://interactxp.in" target="_blank" rel="noopener">InteractXP</a></li>
+        <li><a href="https://phd.ritwiksharma.com" target="_blank" rel="noopener">PhD research</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-legal">
+      <span>© 2026 Ritwik Sharma</span>
+      <span>Built with HTML, CSS, restraint.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
