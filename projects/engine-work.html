@@ -76,15 +76,15 @@
   <div class="wrap-narrow">
     <h2>A profiler for every event handler, and the 83-second freeze it caught</h2>
     <p><strong>What I built.</strong> <code>000_ZombitaProfiler.lua</code> loads first and wraps every Lua event handler of every mod on the server, timing each by file and line. Each minute it logs the slowest handlers, and it logs straight away when a long stall ends.</p>
-    <p><strong>What it caught.</strong> On 17 Oct 2026, with 22 players online, the server stopped ticking for 83 seconds. My freeze watchdog took a thread dump during the freeze, and the profiler named the exact handler the moment the game came back. Log excerpts are copied unedited, except for player names.</p>
-<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>14:34:32 FROZEN online file 37 s old (last write 14:33:54 UTC), 22 online, f=81143 +0 in 30 s
-14:34:32 dump ~/freeze_dumps/20261017-143431.txt (main: RUNNABLE at StringLib.lower(StringLib.java:717))
+    <p><strong>What it caught.</strong> On 17 Oct 2026, with 22 players online, the server stopped ticking for 83 seconds. My freeze watchdog took a thread dump during the freeze, and the profiler named the exact handler the moment the game came back. Log excerpts are shortened to fit (paths and package names cut) and carry no player names.</p>
+<div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>14:34:32 dump ~/freeze_dumps/20261017-143431.txt (main: RUNNABLE at StringLib.lower(StringLib.java:717))
+14:34:32 FROZEN online file 37 s old (last write 14:33:54 UTC), 22 online, f=81143 +0 in 30 s
 14:35:31 freeze over (ticking again) after 83 s
 
 [17-10-26 14:35:17.311] LOG  : Lua  f:81145 st:1,670,542,295&gt; [ZProf] 107s | 102143 ms in handlers | players 22 |
   1) 100085 ms  OnClientCommand  B42Pantherv2:LootZoneStore.lua:335  x778 | 2) 193 ms  LoadGridsquare ...</pre></div><div class="figure-caption">Sources: freeze watchdog log, server DebugLog 14:33-14:36 UTC, thread dump 20261017-143431.</div></div>
     <p>Main thread stack from the dump, top down: <code>String.toLowerCase</code> &larr; <code>StringLib.lower</code> &larr; Kahlua <code>pcall</code> &larr; <code>Event.trigger</code> &larr; <code>LuaEventManager.triggerEvent (OnClientCommand)</code> &larr; <code>GameServer.receiveClientCommand</code> &larr; <code>GameServer.main</code>.</p>
-    <p><strong>Cause.</strong> An admin opened the Panther loot-balancer's Loot Zones page. Their client then sent <code>GetLootZones</code> 75 times in 102 seconds. Each request copied, summarised and sorted the whole catalogue of 4,583 zones, calling <code>lower()</code> on both names in every comparison, and that command was exempt from the mod's own rate limit. The same handler had stalled the server for 148.8 s on 14 Oct. I gave the mod's author the logs, the exact line and the cause.</p>
+    <p><strong>Cause.</strong> An admin opened the Panther loot-balancer's Loot Zones page. Their client then sent <code>GetLootZones</code> 75 times in 102 seconds. Each request copied, summarised and sorted the whole catalogue of 4,583 zones, calling <code>lower()</code> on both names in every comparison, and that command was exempt from the mod's own rate limit. The same handler had stalled the server for 148.8 s on 14 Oct. I wrote a throttle for that command and sent the mod's author the logs, the line and the cause.</p>
     <div class="figure"><img src="../assets/soup/perf-now.jpg" alt="The Perf page on the Soup website: ticks a minute, what is loaded, the box's load, and a table of the top Lua handlers by file and line, with milliseconds and calls."><div class="figure-caption">The profiler today, on the server's Perf page: the Lua handlers that cost the most time in the last minute, by file and line.</div></div>
   </div>
 </section>
@@ -92,11 +92,11 @@
 <section class="cs-section">
   <div class="wrap-narrow">
     <h2 id="coop-crash">A vanilla Build 42 crash traced into the jar: chicken coops on chunk unload</h2>
-    <p><strong>The crash.</strong> Players crashed to desktop while walking near a chicken coop:</p>
+    <p><strong>The crash.</strong> Players were thrown back to the main menu, some seconds after joining, when a chunk with a coop unloaded:</p>
 <div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>NullPointerException ... IsoAnimal.removeFromUpdateLists() because "animal" is null
     at IsoHutch.removeFromWorld(IsoHutch.java:1095)</pre></div></div>
-    <p><strong>What the jar showed</strong> (42.21, read class by class). <code>NetworkPlayerAI.parse(AnimalPacket)</code> does <code>animalInside.put(oldPos, null)</code> and only refills the slot when the packet names a new one. So a hen leaving the coop leaves a <code>null</code> on the client. When the chunk unloads, <code>IsoHutch.removeFromWorld</code> walks that map and crashes.</p>
-    <p>A first fix that ran on <code>OnTick</code> never fired before a crash. The frame order explains why: <code>GameClient.update</code> (packets) runs, then <code>OnTickEvenPaused</code>, then <code>ProcessChunkPos</code> (the unload, where it crashes), and only then <code>OnTick</code>. So the check now runs on <code>OnTickEvenPaused</code>, the only hook between the packet and the unload:</p>
+    <p><strong>What the jar showed</strong> (42.21, read class by class). <code>NetworkPlayerAI.parse(AnimalPacket)</code> does <code>animalInside.put(oldPos, null)</code> and only refills the slot when the packet names a new one. So a hen leaving the coop leaves a <code>null</code> on the client. When the chunk unloads, <code>IsoHutch.removeFromWorld</code> walks that map and throws on the <code>null</code>.</p>
+    <p>A first fix that ran on <code>OnTick</code> never fired before the exception. The frame order explains why: <code>GameClient.update</code> (packets) runs, then <code>OnTickEvenPaused</code>, then <code>ProcessChunkPos</code> (the unload, where it throws), and only then <code>OnTick</code>. So the check now runs on <code>OnTickEvenPaused</code>, the only hook between the packet and the unload:</p>
 <div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>--- Rebuild one coop's animal list without empty slots. Returns how many empty slots were dropped (0 = untouched).
 function HF.clean(hutch)
     local map = hutch:getAnimalInside()
@@ -120,7 +120,7 @@ if Events and Events.OnTickEvenPaused then Events.OnTickEvenPaused.Add(HF.onFram
 
 <section class="cs-section">
   <div class="wrap-narrow">
-    <h2>One string over 32 KB crashes every client</h2>
+    <h2>One string over 32 KB breaks on every client</h2>
     <p><strong>Symptom.</strong> On 11 Oct 2026 the in-game leaderboard stuck on "Waiting for server..." for everyone, and every client logged <code>NegativeArraySizeException</code>.</p>
     <p><strong>Cause.</strong> Server-to-client commands write each text value with a 2-byte length, and the rankings JSON had just passed 37 KB as the player count grew. The fix sends big texts in pieces:</p>
 <div class="figure"><div class="arch" style="margin: 0; border: 0; border-radius: 0;"><pre>-- 1.7.173: the game sends each text value of a server command with a 2-byte length, so one string over ~32 KB
@@ -147,7 +147,7 @@ end</pre></div><div class="figure-caption">From <code>server/ZombitaLeaderboardS
 <section class="cs-section">
   <div class="wrap-narrow">
     <h2>Removing a mod from a live Build 42 save</h2>
-    <p>Normally you can't take a mod off a running B42 server without breaking it. I found out why by reading the jar, then proved it on scratch dedicated servers on this PC (31 Oct 2026):</p>
+    <p>Normally you can't take a mod off a running B42 server without breaking it. I found out why by reading the jar, then proved it on scratch dedicated servers on my own PC (31 Oct 2026):</p>
     <ul>
       <li><strong>Fatal for every client:</strong> <code>ScriptsDictionary</code> (SpriteConfigs, SpriteOverlayConfigs, ContextMenuConfigs) and <code>StringDictionary</code>. <code>parseLoadList</code> only clears <code>isLoaded</code> for scripts loaded in the current boot, so a saved entry with no script behind it stays loaded for ever. The server boots fine, then every client throws "Missing dictionary script on client".</li>
       <li><strong>Fix:</strong> a stub entity with the same <code>module.name</code>, on both sides. One line parses: <code>entity X { component SpriteConfig { face N { layer { row = false, } } } }</code>. A stub pointing at a tile that doesn't exist kills the server instead ("World loading could not proceed").</li>

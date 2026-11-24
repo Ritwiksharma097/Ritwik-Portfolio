@@ -127,7 +127,7 @@
 <h3>Judgment</h3>
 <p>When a player says "I lost my bag", a cheap model gathers the evidence from server logs, chat and stats, and a strong model rules on it with the player's file and trust in view. The verdict goes to an admin.</p>
 <h3>Running the world</h3>
-<p>She posts quests and personal jobs, runs Dawn of the Dead horde nights, writes daily lore quiz questions and a twice-weekly illustrated newspaper that admins approve and that arrives in game as an item. She spots alt accounts from how linked accounts actually play, and when a cheater is confirmed she sends a horde after them in game before the kick.</p>
+<p>She posts quests and personal jobs, runs Dawn of the Dead horde nights, writes daily lore quiz questions and a twice-weekly newspaper that admins approve and that arrives in game as an item. She spots alt accounts from how linked accounts actually play, and when a cheater is confirmed she sends a horde after them in game before the kick.</p>
 <p>The newspaper is one piece of data drawn in four places: on the website, as a front page posted to Discord, in the Newspaper tab of the in-game hub and in the News app on the phone, and it also arrives as an item players can read. Each issue goes to the admins first to approve, edit or send back. If not enough happened, she skips the issue and says so rather than invent news.</p>
 <div class="figure"><img src="../assets/zombita/paper-web.jpg" alt="Issue 11 of the State of Undead Purge newspaper on the website, written by Zombita, with a photo, the headline story and a leaderboard column."><div class="figure-caption">Issue 11 on the website, 20 November 2026. Written by Zombita from the week's updates, with the leaderboard's top three in The Board.</div></div>
 <div class="figure-grid"><div class="figure"><img src="../assets/zombita/paper-game.jpg" alt="The same newspaper issue in the Paper tab of the in-game server hub."><div class="figure-caption">The same issue in game, in the hub's Paper tab. Screenshot by Warrior.</div></div><div class="figure"><img src="../assets/zombita/paper-discord.jpg" alt="The same issue posted by Zombita in the Discord server-news channel as a front page image with the story text."><div class="figure-caption">And in Discord's server news.</div></div><div class="figure"><img src="../assets/zombita/paper-phone.jpg" alt="The same newspaper issue in the News app of the in-game phone."><div class="figure-caption">And in the News app on every player's phone. Screenshot by Warrior.</div></div></div>
@@ -155,7 +155,7 @@
 
 <section class="cs-section"><div class="wrap-narrow">
 <h2>Stack</h2>
-<div class="tech-stack"><span>Python Discord bot (31 cogs)</span><span>FastAPI (56 routers)</span><span>PostgreSQL (about 140 tables)</span><span>Next.js</span><span>Lua (Kahlua) game mod</span><span>File bridge to the game</span><span>About 25 modules calling LLMs</span></div>
+<div class="tech-stack"><span>Python Discord bot (40+ cogs)</span><span>FastAPI (60+ routers)</span><span>PostgreSQL (about 140 tables)</span><span>Next.js</span><span>Lua (Kahlua) game mod</span><span>File bridge to the game</span><span>About 25 modules calling LLMs</span></div>
 <p>Nightly jobs run in batches over bounded inputs, so cost grows with time, not with player count.</p>
 </div></section>
 
