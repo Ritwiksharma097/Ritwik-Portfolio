@@ -302,6 +302,107 @@ h1, h2, h3, h4 {
   .section { padding: var(--s-7) 0; }
 }
 
+/* Anchor targets land below the sticky nav, with an instant jump
+   (a smooth scroll down a long page can stop short while images load) */
+[id] { scroll-margin-top: 80px; }
+html:has(:target) { scroll-behavior: auto; }
+
+/* ---------- Five-minute tour (home page) ---------- */
+.tour {
+  padding: var(--s-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+.tour-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.tour-title {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+.tour-note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.tour-list {
+  list-style: none;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.tour-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.tour-item:last-child { border-bottom: none; }
+.tour-go {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-5);
+  transition: background 0.15s ease;
+}
+.tour-go:hover { background: var(--bg-elev-2); }
+.tour-go:hover strong { color: var(--accent); }
+.tour-n {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.tour-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+.tour-text strong {
+  color: var(--text);
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.tour-where {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.tour-play {
+  flex: none;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--s-5);
+  border-left: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.tour-play:hover { background: var(--accent-dim); }
+@media (max-width: 820px) {
+  .tour-go { grid-template-columns: 20px 1fr; row-gap: var(--s-1); }
+  .tour-where { grid-column: 2; white-space: normal; }
+  .tour-item { flex-wrap: wrap; }
+  .tour-play {
+    flex-basis: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: var(--s-2) var(--s-5) var(--s-2) calc(var(--s-5) + 20px + var(--s-4));
+  }
+}
+
 /* ---------- Project cards ---------- */
 .projects {
   display: grid;

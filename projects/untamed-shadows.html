@@ -80,7 +80,7 @@
     <h2>What it is</h2>
     <p>Guards and animals notice you by sight, light, sound and smell. Wind carries your scent, so anything downwind smells you from farther away, and rolling in mud masks it for a while. Deer and crows raise the alarm at what they see or smell, and guards go to look. Night favours the tigress, rain dulls the guards, and firelight gives them their eyes back.</p>
     <p>You have a few tools. Red berries make a guard sick and blue ones put him to sleep, and the monkey can slip either into a pot or barrel from 20 metres. Knock down a beehive and the swarm sends guards running. Call the wolf pack to howl at the camp's edge, or roar to alert everyone within 28 metres. A pounce is silent from behind and loud from the front. There are two health modes: normal, and hardcore, where two hits kill you.</p>
-    <div class="figure">
+    <div class="figure" id="silent-predator">
       <video controls muted loop playsinline preload="none" poster="../assets/untamed-shadows/silent-predator-poster.jpg" aria-label="The tigress creeps through tall grass toward the poachers' camp, is caught in a snare for a moment while the monkey complains, takes the Trapper from cover, and slips away past the guards to a Mission Complete screen reading Silent Predator, 72.7 seconds, nobody alerted, no hits taken.">
         <source src="../assets/untamed-shadows/silent-predator.mp4" type="video/mp4">
       </video>
@@ -93,7 +93,7 @@
 
 <section class="cs-section">
   <div class="wrap-narrow">
-    <h2>How it is built</h2>
+    <h2 id="how-built">How it is built</h2>
     <p>It started as a top-down grey-box of the first mission in the browser, built to tune the stealth loop before any of it went into Unreal: vision cones, suspicion, scent and wind, mud, the monkey, the dog and every tool. The Unreal level keeps the same layout, and its minimap is that same map. The prototypes are playable in the browser, best with a keyboard: <a href="https://untamed-shadows-map.pages.dev/trapper/" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">level 1, the Trapper</a>, <a href="https://untamed-shadows-map.pages.dev/sharpshooter/" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">level 2, the Sharpshooter</a> and <a href="https://untamed-shadows-map.pages.dev/map/" target="_blank" rel="noopener" style="color: var(--accent); border-bottom: 1px solid var(--accent-dim);">the world map</a>.</p>
     <div class="figure">
       <video controls muted loop playsinline preload="none" poster="../assets/untamed-shadows/prototype-2d-poster.jpg" aria-label="A top-down grey-box of the Trapper mission in the browser: guards with vision cones and states such as unaware and alerted, the tigress moving through tall grass, an event log with the monkey's lines, the Trapper killed, and a Mission Complete panel reading Predator, body found, with the run's stats.">
