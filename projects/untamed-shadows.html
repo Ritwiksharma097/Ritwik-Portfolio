@@ -101,6 +101,12 @@
       </video>
       <div class="figure-caption">The first prototype: the same Trapper mission as a top-down grey-box. Guards show their vision cones and what they think is happening, and the event log on the right reports each system as it fires. This run ends with the Trapper dead but his body found, so it scores Predator (body found) instead of Silent Predator, at 65.4 seconds. 70 seconds, no sound.</div>
     </div>
+    <div class="figure">
+      <video controls muted loop playsinline preload="none" poster="../assets/untamed-shadows/sharpshooter-2d-poster.jpg" aria-label="The second mission as a top-down grey-box: the tigress brings down the Sharpshooter's watchtower by clawing its rotten posts, is shot in the open by the handler and fails, then on a second run brings the tower down again and escapes across the river to the far bank for Mission Complete.">
+        <source src="../assets/untamed-shadows/sharpshooter-2d.mp4" type="video/mp4">
+      </video>
+      <div class="figure-caption">Mission 2 in the same grey-box: the Sharpshooter, a long gun on a watchtower over open plains. He can only be pounced on from a fig tree, or you claw through the tower's rotten posts until it comes down with him on it. First run: the tower comes down, then the tigress lingers in the open and the handler shoots her. The monkey: "Open ground, long gun. We knew. Try again. Please." Second run, at double speed: the same trick, then across the river to the far bank. Predator (body found), method: tower collapse. 72 seconds, no sound.</div>
+    </div>
     <p>The stealth rules live in an engine-agnostic C++20 library with its own test suite of 90 test cases: perception, suspicion, light, scent, wind, poison, bodies and the monkey's rules. Unreal loads it as a plugin, so the rules can be tested and changed without the editor.</p>
     <p>On top of it the Unreal game layer is C++ with thin Blueprints, and all tuning numbers sit in Data Assets. It covers the tigress and her input, the HUD and minimap with wind, day and night with night vision, weather from clear to heavy rain that changes sight, scent and noise, and wildlife: deer, crows, peafowl and vultures, with alarm calls.</p>
     <div class="figure"><img src="../assets/untamed-shadows/night-vision.jpg" alt="Night vision at 2 a.m."><div class="figure-caption">Night vision at 2 a.m.</div></div>
