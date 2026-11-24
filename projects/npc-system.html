@@ -16,21 +16,6 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://work.ritwiksharma.com/og.jpg">
-  <style>
-    /* Screenshot slots: replace each .shot-slot with an <img> or <video> when the capture is ready. */
-    .shot-slot {
-      aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: var(--s-4);
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-faint);
-      background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 12px, var(--bg-elev-2) 12px, var(--bg-elev-2) 24px);
-    }
-  </style>
 </head>
 <body>
 <div class="xsite">
@@ -45,7 +30,6 @@
     </nav>
   </div>
 </div>
-
 
 <nav class="nav">
   <div class="nav-inner">
@@ -100,8 +84,7 @@
       <li><strong>Fights.</strong> Against zombies they swing, shove, stomp, step back and break off. They can be bitten, get sick and turn. The zombies are exactly as hard as the server sets them. Nothing in the mod makes them easier.</li>
     </ul>
 
-    <!-- SHOT: survivor daily life (cooking, garden, lights at dusk) -->
-    <div class="figure"><img src="../assets/npc-system/looks-sheet.jpg" alt="Eight of the NPCs' baked looks shown front and back in a T-pose: tee and jeans, cap and tee, hoodie and cargo pants, flannel and overalls, leather jacket, jumper and chinos, a woman's tee and cap, and a woman's hoodie."><div class="figure-caption">Placeholder until the in-game shot: 8 of the 49 baked looks, from an offline preview render in a T-pose. Not a game screenshot.</div></div>
+    <div class="figure"><img src="../assets/npc-system/looks-sheet.jpg" alt="Eight of the NPCs' baked looks shown front and back in a T-pose: tee and jeans, cap and tee, hoodie and cargo pants, flannel and overalls, leather jacket, jumper and chinos, a woman's tee and cap, and a woman's hoodie."><div class="figure-caption">8 of the 49 baked looks, front and back, from an offline preview render in a T-pose, not a game screenshot.</div></div>
 
     <div class="figure">
       <video controls muted loop playsinline preload="none" poster="../assets/npc-system/npc-talk-poster.jpg" aria-label="The talk window with a stranger who becomes Iris Mason once she gives her name. Her mood, clothes and opinion of the player sit in the header, her answers fill the log, and asking if she needs a hand gets a job: take a notebook to Iris Shaw in Muldraugh, which then shows in the task tracker.">
@@ -132,11 +115,6 @@
     <p><strong>A load governor.</strong> The mod watches the real gap between server ticks, so it sees load from the engine and every other mod, not only its own. When the server is busy it slows only what nobody is watching: gossip, holidays, news, letters and off-screen life. Fights, senses, zombies and anything at a player's side never wait. Staff can also flip any system off live, or pause new NPCs, without a restart.</p>
     <p><strong>"What is it doing and why".</strong> The admin panel lists every NPC, on screen or off, with what it is doing and why, its needs and its last decisions. Testers can take a snapshot with <code>/npcreport</code>: for each NPC nearby it writes the current intent and where it came from (Lua or Python), mood, needs, health and its last 10 decisions.</p>
 
-    <!-- SHOT: admin why-view (admin panel: NPC list, "doing and why", last decisions) -->
-    <div class="figure"><div class="shot-slot">Screenshot coming: the admin panel's "what is it doing and why" view</div><div class="figure-caption">The admin panel: an NPC's current intent, the reason for it, its needs and its last decisions.</div></div>
-
-    <!-- SHOT: reputation / feelings panel (People panel: opinion, named feelings like grateful or hurt) -->
-    <div class="figure"><div class="shot-slot">Screenshot coming: the People panel with an NPC's opinion of you and its feelings</div><div class="figure-caption">What one NPC thinks of you: trust, named feelings like grateful or hurt, and what it has heard.</div></div>
   </div>
 </section>
 
@@ -145,7 +123,6 @@
     <h2>Fights and companions</h2>
     <p>Footwork against zombies leans on a model trained on real players (next section). The fight's own safety rules still win over it. Hurt bodies look hurt, with limps, blood, bandages and splints.</p>
 
-    <!-- SHOT: fight with zombies (an NPC swinging, backing off, shoving) -->
     <div class="figure">
       <video controls muted loop playsinline preload="none" poster="../assets/npc-system/npc-life.jpg" aria-label="An NPC survivor is swarmed by zombies in a parking lot, her wounds are checked in a list, she runs through gardens with zombies behind her, and her body is left with her own things.">
         <source src="../assets/npc-system/npc-life.mp4" type="video/mp4">
@@ -153,11 +130,6 @@
       <div class="figure-caption">One survivor's bad day, unpolished and from the test phase. Zombies swarm her in a parking lot; checking her wounds shows a bite on the arm and more; she runs through the gardens with the dead behind her; and her body is left with her own things: her ID card, a party flyer and a printed selfie. 51 seconds, one stretch sped up, no sound.</div>
     </div>
 
-    <!-- SHOT: companions + order wheel (two or three companions following, the wheel open) -->
-    <div class="figure"><div class="shot-slot">Screenshot coming: companions following the player, with the order wheel open</div><div class="figure-caption">Companions and the order wheel, with standing orders for gun use, staying quiet, picking things up and a light at night.</div></div>
-
-    <!-- SHOT: short clip (video), 10 to 20 s of NPCs in the world; replace the slot with
-         <video src="../assets/npc-system/npc-clip.mp4" poster="../assets/npc-system/npc-clip.jpg" controls muted loop playsinline preload="metadata"></video> -->
     <div class="figure">
       <video controls muted loop playsinline preload="none" poster="../assets/npc-system/npc-clip.jpg" aria-label="An NPC drives a red car away down the road, then later drives into a cul-de-sac, parks and gets out.">
         <source src="../assets/npc-system/npc-clip.mp4" type="video/mp4">
@@ -181,7 +153,6 @@
 -- returns one of: back, forward, left, right, shove, stay, swing, turn
 -- GENERATED: do not edit, retrain. Kahlua-safe: tables, loops and if only, no main-body locals.</pre></div><div class="figure-caption">Header of <code>server/ZNS/ZNS_FightTree.lua</code> (line breaks added). The file ships with PRIOR_W 0.5.</div></div>
 
-    <!-- SHOT: Pulse page (reused from the Soup page; swap for fresher captures if Nin has them) -->
     <div class="figure-grid">
       <div class="figure"><img src="../assets/soup/pulse-status.jpg" alt="The Zombita Pulse page: running full with 17 players online, its cost per second against a budget, data written today, no errors, and the switch between pause, light, full, automatic and by players."><div class="figure-caption">The Pulse page: running full with 17 players, its cost against the budget, today's data, and the switch.</div></div>
       <div class="figure"><img src="../assets/soup/pulse-lines.jpg" alt="Pulse's lines today by kind, such as path, act, loot, foot, open, drive, swing and hit, and details on the current file, client part and drops."><div class="figure-caption">What it recorded today by kind (paths, actions, loot, footwork, doors, driving, swings) and how the client part is doing.</div></div>
