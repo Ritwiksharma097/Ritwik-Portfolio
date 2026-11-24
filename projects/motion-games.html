@@ -48,7 +48,7 @@
     <a class="cs-back" href="../index.html">Work</a>
     <div class="eyebrow"><span class="accent">Motion Game · Solo · 2026</span></div>
     <h1 class="cs-title">Panda Games</h1>
-    <p class="cs-lede">Three games for a party screen that you play with your body. A webcam tracks up to four children at once, both hands each, and pandas in a bamboo forest react to them. No controller and no touch.</p>
+    <p class="cs-lede">Three games for a party screen that you play with your body. A webcam tracks up to four children at once, both hands each, and pandas in a bamboo forest react to them. No controller and no touch. Further down: two 360° VR films from the same forest, and a camera-tracked wall game for a festival campaign.</p>
 
     <div class="cs-meta">
       <div class="item">
@@ -79,7 +79,12 @@
   <div class="wrap-narrow">
     <h2>What it is</h2>
     <p>Children wave to start. In <strong>Feed the Panda</strong>, bamboo, shoots and apples drop from the canopy, and anything a child touches flies to the panda, who munches it. In <strong>Bubble Pop</strong>, cubs float up inside soap bubbles; pop one and the cub drops, lands and toddles back to its mum. In <strong>Wake the Sleepy Panda</strong>, everyone waves, jumps and dances to fill a wake-up meter until the panda stirs, gets up, yawns and looks at them, then dozes off again.</p>
-    <div class="figure"><img src="../assets/motion-games/attract.jpg" alt="The start screen: stand in front of the screen and wave."><div class="figure-caption">The start screen: stand in front of the screen and wave.</div></div>
+    <div class="figure">
+      <video controls muted loop playsinline preload="none" poster="../assets/motion-games/panda-games-poster.jpg" aria-label="Panda Games: the wave-to-play screen and game menu, then Feed the Panda with a three-star result, Bubble Pop with cubs dropping out of popped bubbles and All cubs home, and Wake the Sleepy Panda waking up for Good morning.">
+        <source src="../assets/motion-games/panda-games.mp4" type="video/mp4">
+      </video>
+      <div class="figure-caption">All three games, played in front of the camera: wave to start, hold a hand over a game to pick it, then Feed the Panda, Bubble Pop and Wake the Sleepy Panda, each with its result screen. 53 seconds, no sound.</div>
+    </div>
     <div class="figure-grid"><div class="figure"><img src="../assets/motion-games/feed.jpg" alt="Feed the Panda."><div class="figure-caption">Feed the Panda.</div></div><div class="figure"><img src="../assets/motion-games/bubble.jpg" alt="Bubble Pop."><div class="figure-caption">Bubble Pop.</div></div><div class="figure"><img src="../assets/motion-games/wake.jpg" alt="Wake the Sleepy Panda."><div class="figure-caption">Wake the Sleepy Panda.</div></div></div>
   </div>
 </section>
@@ -95,8 +100,44 @@
 
 <section class="cs-section">
   <div class="wrap-narrow">
+    <h2>360° VR: Panda Grove and Panda Forest</h2>
+    <p>Two 30-second 360° films for children on a Meta Quest, from the same pandas. The viewer stands in the middle of a clearing at a child's eye height, with something happening in every direction: a mother panda eating bamboo, cubs batting a beach ball, a cub swinging from a branch, a peekaboo cub behind a bush. Panda Grove is a cartoon world; Panda Forest is a misty, lifelike bamboo forest with sleeping and wandering pandas.</p>
+    <p>Both are built entirely by my own Blender scripts, from the scene to the soundtrack, with the chewing sounds timed to the jaw. They render at 4096 by 2048 and loop seamlessly, and the frames were split between two PCs to cut render time. A last step writes the 360° metadata so headsets and YouTube play them as VR.</p>
+    <div class="figure-grid">
+      <div class="figure">
+        <video controls muted loop playsinline preload="none" poster="../assets/motion-games/panda-grove-360-poster.jpg" aria-label="A slow full turn inside Panda Grove, a cartoon bamboo grove with a mother panda, cubs, a tree with a cub hanging from it, butterflies and clouds.">
+          <source src="../assets/motion-games/panda-grove-360.mp4" type="video/mp4">
+        </video>
+        <div class="figure-caption">Panda Grove, shown as a headset view turning once around the clearing. 30 seconds.</div>
+      </div>
+      <div class="figure">
+        <video controls muted loop playsinline preload="none" poster="../assets/motion-games/panda-forest-360-poster.jpg" aria-label="A slow full turn inside Panda Forest, a misty lifelike bamboo forest with a panda eating, a cub, two pandas sleeping by a log and one walking past.">
+          <source src="../assets/motion-games/panda-forest-360.mp4" type="video/mp4">
+        </video>
+        <div class="figure-caption">Panda Forest, the lifelike version, turning once around. 30 seconds.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
+    <h2>A festival wall game</h2>
+    <p>Two camera-tracked games for a brand's Festival of Lights campaign, made for a screen inside a stand at the venue. People wave to start and hold a hand over a game to pick it. In the first, your hand becomes a sparkler: hold it on each unlit oil lamp on a tiered stand to light all nine, then flick upward for fireworks. In the second, you float eleven lamps down a river at night and send lanterns into the sky.</p>
+    <p>They run in the browser with MediaPipe hand tracking and three.js, and fall back to plain movement when the tracker loses a fast hand. They lay themselves out for a vertical screen, a kiosk, a totem or a TV on its side, without any setting. The logo on screen is the client's.</p>
+    <div class="figure" style="max-width: 360px; margin-left: auto; margin-right: auto;">
+      <video controls muted loop playsinline preload="none" poster="../assets/motion-games/festival-wall-poster.jpg" aria-label="A vertical screen: wave to play, choose a game, light nine oil lamps on a tiered stand with a sparkler, a festival greeting, then float eleven lamps on a river at night and a final greeting.">
+        <source src="../assets/motion-games/festival-wall.mp4" type="video/mp4">
+      </video>
+      <div class="figure-caption">The vertical layout: wave to play, pick a game, light the nine lamps, then float the lamps on the river. 51 seconds at 1.25x speed, no sound.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap-narrow">
     <h2>Stack</h2>
-    <div class="tech-stack"><span>MediaPipe Pose</span><span>three.js</span><span>JavaScript</span><span>Web Workers</span><span>Blender scripting</span><span>Electron</span></div>
+    <div class="tech-stack"><span>MediaPipe Pose</span><span>three.js</span><span>JavaScript</span><span>Web Workers</span><span>Blender scripting</span><span>Electron</span><span>MediaPipe Hands</span><span>360° VR video</span></div>
   </div>
 </section>
 
@@ -106,7 +147,8 @@
     <ul>
       <li><strong>Body-controlled play.</strong> Up to four players tracked at once with no controller.</li>
       <li><strong>Performance.</strong> Tracking off the main thread, with a smooth frame rate on modest hardware.</li>
-      <li><strong>Shipping to a venue.</strong> An offline app built to run unattended.</li>
+      <li><strong>Shipping to a venue.</strong> An offline app built to run unattended, and a wall game that fits any screen it is put on.</li>
+      <li><strong>VR content from code.</strong> Two 360° films built and rendered entirely by Blender scripts.</li>
     </ul>
   </div>
 </section>
