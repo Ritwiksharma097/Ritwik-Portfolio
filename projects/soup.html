@@ -219,6 +219,16 @@
     <p>Players grow their safehouses through a ticket. Zombita opens a private Discord channel with a link to the player's own map page, where they drag the edges of their safehouse box out on the live 3D map and see the tile count and the price change as they drag. The page enforces the rules: a new tile next to the old boundary costs 2 bronze, each row further out costs 1 more per tile, the biggest safehouse is 59 x 49, and it can never touch another safehouse.</p>
     <p>When the player sends it, a card lands in the channel with Approve, Edit price and Send back. Nothing leaves the player's wallet until an admin approves, and a sent-back drawing comes with the admin's note so the player can redraw. The same page turns a safehouse into a faction safehouse, which needs both the owner and the faction's leaders to agree before an admin approves it.</p>
 
+    <div class="figure">
+      <img src="../assets/soup/safehouse-map.jpg" alt="The safehouse ticket page: a dashed box drawn around a house on the 3D map, and a side panel with the new size, the price and an admin's note.">
+      <div class="figure-caption">A ticket on the map page. The dashed box is the player's drawing, 39 x 45 for 6 silver 669 bronze. An admin sent it back with a note to expand inside the fence first. Names and coordinates are blurred.</div>
+    </div>
+
+    <div class="figure">
+      <img src="../assets/soup/safehouse-ticket.jpg" alt="The ticket card in Discord with Approve, Edit price, Send back and Close ticket buttons, and Zombita's message that the drawing was sent back.">
+      <div class="figure-caption">The same ticket in Discord. The card shows the new tiles and the price, and the admin decides. When it was sent back, Zombita told the player and confirmed nothing was charged.</div>
+    </div>
+
     <h3>Performance from the outside</h3>
     <p>The Perf page reads the server from files outside the game, so it keeps working when the game is struggling. It shows ticks a minute against the 500 the game needs to keep up, what is loaded (zombies, cars, animals, and zombies near players), the box's load, memory and CPU heat, and the Lua handlers that cost the most time in the last minute, from my own profiler that wraps every mod's event handlers. Its Changes tab shows what changed in the mod list or server settings, before and after, so a slow evening can be traced back to its cause.</p>
   </div>
