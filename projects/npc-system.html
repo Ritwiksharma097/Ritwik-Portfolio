@@ -142,7 +142,12 @@
 
     <!-- SHOT: short clip (video), 10 to 20 s of NPCs in the world; replace the slot with
          <video src="../assets/npc-system/npc-clip.mp4" poster="../assets/npc-system/npc-clip.jpg" controls muted loop playsinline preload="metadata"></video> -->
-    <div class="figure"><div class="shot-slot">Clip coming: a short video of NPCs in the world</div><div class="figure-caption">A short clip, no sound.</div></div>
+    <div class="figure">
+      <video controls muted loop playsinline preload="none" poster="../assets/npc-system/npc-clip.jpg" aria-label="An NPC drives a red car away down the road, then later drives into a cul-de-sac, parks and gets out.">
+        <source src="../assets/npc-system/npc-clip.mp4" type="video/mp4">
+      </video>
+      <div class="figure-caption">Sent somewhere by an admin test command, an NPC gets in the car, drives off down the road, then arrives, parks and gets out. Same motion code on the server and every client. Test server, 20 seconds, no sound.</div>
+    </div>
   </div>
 </section>
 
